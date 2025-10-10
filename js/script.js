@@ -17,13 +17,13 @@ $(function(){
 
     //does the text toggle 
     if ($signIn.is(':visible')) {
-      $toggleName.html('SignIn - Page');
+      $toggleName.html('Sign In - Page');
       $toggleText.html(
         'Don’t have an account? ' +
         '<a href="#" id="toggle-link">Sign up</a>'
       );
     } else {
-      $toggleName.html('SignUp - Page');
+      $toggleName.html('Sign Up - Page');
       $toggleText.html(
         'Already have an account? ' +
         '<a href="#" id="toggle-link">Sign in</a>'
