@@ -29,15 +29,39 @@ function isHightRated(movie){
       .then ((results)=> {return results})
       .catch ((error)=> console.log(error));
 
-  console.log(data);
 
+  const url2 = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=2&sort_by=popularity.desc';
+  const options2 = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4NmVhMjI0YjE0NjU1Y2MyYWJjM2U3MjFhZTQzMzU4NSIsIm5iZiI6MTc1ODExODk0NC41NzIsInN1YiI6IjY4Y2FjNDIwOThmZmQ1NDU1MGUzNjQ5YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EB1Jw38BBXuv-nT5v9wJYKatVdvxHNY8LMWUar0LAGY'
+  }
+};
 
+  let data2 = await fetch(url2, options2)
+      .then ((response)=> response.json())
+      .then ((results)=> {return results})
+      .catch ((error)=> console.log(error));
 
   let movieList = [];
 
+  for (i = 0; i < data2.results.length; i++) {
+
+    let image = `https://image.tmdb.org/t/p/w500${data2.results[i].poster_path}`;
+    let title = data2.results[i].title;
+    let year = data2.results[i].release_date;
+    let description = data2.results[i].overview;
+    let rating = data2.results[i].vote_average;
+    let link = `https://www.themoviedb.org/movie/${data2.results[i].id}`;
+
+    movieList.push(window["movie_" + i] = new Movie(image, year, title, description, rating, link));
+
+  }  
+
   for (i = 0; i < data.results.length; i++) {
 
-    let image = data.results[i].poster_path;
+    let image = `https://image.tmdb.org/t/p/w500${data.results[i].poster_path}`;
     let title = data.results[i].title;
     let year = data.results[i].release_date;
     let description = data.results[i].overview;
@@ -47,7 +71,6 @@ function isHightRated(movie){
     movieList.push(window["movie_" + i] = new Movie(image, year, title, description, rating, link));
 
   }
-
 
 console.log(movieList);
 
