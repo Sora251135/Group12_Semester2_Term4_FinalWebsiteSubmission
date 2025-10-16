@@ -9,9 +9,13 @@ class Movie{
   }
 }
 
+//Function to filter movies with rating 7.4 and above
+
 function isHightRated(movie){
   return movie.rating >= 7.4;
 }
+
+//Fetch data from API twice to get 40 movies total
 
 !async function() {
 
@@ -44,6 +48,27 @@ function isHightRated(movie){
       .then ((results)=> {return results})
       .catch ((error)=> console.log(error));
 
+console.log(data);
+
+//end of both api calls
+
+//For loop to get 3 movies for carousel
+
+  let carouselMovies = [];
+  
+  for (i = 0; i < 3; i++) {
+    let image = `https://image.tmdb.org/t/p/w500${data.results[i].backdrop_path}`;
+    let title = data.results[i].title;
+    let description = data.results[i].overview;
+    let rating = data.results[i].vote_average;
+
+    carouselMovies.push({image, title, description, rating});
+  }
+
+  console.log(carouselMovies);
+
+//Take data from API and create 40 movie objects
+
   let movieList = [];
 
   for (i = 0; i < data2.results.length; i++) {
@@ -74,12 +99,23 @@ function isHightRated(movie){
 
 console.log(movieList);
 
+//===================================================================================
+
+//Filter movies with rating 7.4 and above
+
 let bestMovies = movieList.filter(isHightRated);
 
 console.log(bestMovies);
 
+//create cards for each movie object (within the bestMovie Filter) and display it on the homepage
+
 bestMovies.forEach(movie => {
-  document.getElementById('CardBox').innerHTML += ` <div class="col-md-4">
+
+ //if HomeCardBox does not exist then skip over this part of the code (to avoid errors on Movie Library page)  
+  const isHomeCardBox = document.getElementById('HomeCardBox'); 
+  if (!isHomeCardBox) return;
+
+  document.getElementById('HomeCardBox').innerHTML += ` <div class="col-md-4">
 
             <div class="card">
               <img src="${movie.image}" class="card-img-top" alt="..." style="height: 400px; object-fit: cover;">
@@ -97,14 +133,76 @@ bestMovies.forEach(movie => {
   `
 })
 
+//===================================================================================
+
+//Js for Movie Library page
+
+//Generate 40 cards for each movie object and display it on the Movie Library page
+
+movieList.forEach(movie => {
+
+  //check if CardBox exists if not then skip over this part of the code (to avoid errors on homepage)
+  const isCardBox = document.getElementById('CardBox'); 
+  if (isCardBox) {
+
+  document.getElementById('CardBox').innerHTML += 
+  `
+  <div class="col-md-4">
+
+            <div class="card">
+              <img src="${movie.image}" class="card-img-top" alt="..." style="height: 400px; object-fit: cover;">
+              <div class="card-body">
+                <h5 class="card-title">${movie.title}</h5>
+                <p class="card-text">${movie.description}</p>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-danger btn-sm">Watch</button>
+                  <button class="btn btn-dark btn-sm">Add to list</button>
+                </div>
+              </div>
+            </div>
+
+  </div>
+  `
+  }
+})
+
+
+//===================================================================================
+
+//Js for Homepage carousel
+
+//create cards for each movie object and display on homepage
+
+carouselMovies.forEach(movie => {
+  document.getElementById('carousel').innerHTML +=
+  `
+  <img src="${movie.image}" class="d-block w-100" alt="...">
+  `
+
+  document.getElementById('carouselBadge').innerHTML +=
+  `
+      <div class="col-md-5 bg-dark bg-opacity-75 p-3 rounded">
+        <h2>${movie.title}</h2>
+        <p>${movie.description}</p>
+        <p>Rating:${movie.rating}</p>
+          <div class="d-flex gap-2">
+            <button class="btn btn-danger">Watch</button>
+            <button class="btn btn-dark">+ Add list</button>
+          </div>
+      </div>
+  `
+})
+
 }();
 
-//===================================================================================//
+//===================================================================================
 
 //Start of Sign Up and Sign in page script.js
 
 // Toggle between Sign In and Sign Up forms using jQuery black magic (also changes the page title)
+
 $(function(){
+
   var $signIn  = $('#sign-in-form'),
       $signUp  = $('#sign-up-form'),
 

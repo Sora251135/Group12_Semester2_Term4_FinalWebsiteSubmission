@@ -20,25 +20,22 @@
     
     <!-- Top part -->
 
-
-<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
     <div class="container">
-      <a class="navbar-brand fw-bold text-danger" href="./Home.html">
-      
-      <!-- can you please upload the logo's --> <!-- added it boss lady -->
+      <a class="navbar-brand fw-bold text-danger" href="Home.html">
 
-        <img src="/assets/images/RedCurtainLogo.png" alt="Red Curtain" width="150" class="me-2" href="Home.html">
+        <img src="/assets/images/RedCurtainLogo.png" alt="Red Curtain" width="150" class="me-2">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link active text-danger" href="Home.html">HOME</a></li>
-          <li class="nav-item"><a class="nav-link" href="Movie Library.html">MOVIES</a></li>
-          <li class="nav-item"><a class="nav-link" href="../Sign in and Sign up.html">SIGN IN</a></li>
-          <li class="nav-item"><a class="nav-link" href="Movie Watchlist.html">MY LIST</a></li>
-          <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-search"></i></a></li>
+          <li class="nav-item"><a class="nav-link navText" href="Home.html">HOME</a></li>
+          <li class="nav-item"><a class="currentPage nav-link" href="Movie Library.html">MOVIES</a></li>
+          <li class="nav-item"><a class="nav-link navText" href="/Sign in and Sign up.html">SIGN IN</a></li> 
+          <li class="nav-item"><a class="nav-link navText" href="Movie Watchlist.html">MY LIST</a></li>
+          <li class="nav-item"><div><a class="nav-link" href="#"><i class="bi bi-search"></i></a></div></li>
         </ul>
       </div>
     </div>
@@ -55,171 +52,13 @@
           <button class="btn-filter">IMDB score</button>
         </div>
     
-  <!-- Movie Grid -->
-  <div class="row g-4">
-    <!-- Repeat movie card -->
+<!-- Movie Grid -->
 
-    <div class="col-md-3">
-        <div class="card">
-          <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Title</h5>
-            <p class="card-text">Description</p>
-            <div class="d-flex gap-2">
-              <button class="btn btn-danger btn-sm">Watch</button>
-              <button class="btn btn-dark btn-sm">Add to list</button>
-            </div>
-          </div>
-        </div>
-      </div>
+<div id="CardBox" class="row g-4">
 
-      <div class="col-md-3">
-        <div class="card">
-          <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Title</h5>
-            <p class="card-text">Description</p>
-            <div class="d-flex gap-2">
-              <button class="btn btn-danger btn-sm">Watch</button>
-              <button class="btn btn-dark btn-sm">Add to list</button>
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- Repeat movie card 40 times Check JS line 138-152 for HTML-->
 
-      <div class="col-md-3">
-        <div class="card">
-          <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Title</h5>
-            <p class="card-text">Description</p>
-            <div class="d-flex gap-2">
-              <button class="btn btn-danger btn-sm">Watch</button>
-              <button class="btn btn-dark btn-sm">Add to list</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="card">
-          <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Title</h5>
-            <p class="card-text">Description</p>
-            <div class="d-flex gap-2">
-              <button class="btn btn-danger btn-sm">Watch</button>
-              <button class="btn btn-dark btn-sm">Add to list</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-    <div class="col-md-3">
-        <div class="card">
-          <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Title</h5>
-            <p class="card-text">Description</p>
-            <div class="d-flex gap-2">
-              <button class="btn btn-danger btn-sm">Watch</button>
-              <button class="btn btn-dark btn-sm">Add to list</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="card">
-          <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Title</h5>
-            <p class="card-text">Description</p>
-            <div class="d-flex gap-2">
-              <button class="btn btn-danger btn-sm">Watch</button>
-              <button class="btn btn-dark btn-sm">Add to list</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="card">
-          <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Title</h5>
-            <p class="card-text">Description</p>
-            <div class="d-flex gap-2">
-              <button class="btn btn-danger btn-sm">Watch</button>
-              <button class="btn btn-dark btn-sm">Add to list</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="card">
-          <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Title</h5>
-            <p class="card-text">Description</p>
-            <div class="d-flex gap-2">
-              <button class="btn btn-danger btn-sm">Watch</button>
-              <button class="btn btn-dark btn-sm">Add to list</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    <!-- <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="movie-card p-2">
-        <div class="movie-poster mb-2"></div>
-        <h6>Title</h6>
-        <p class="text-muted small">Description</p>
-        <div class="d-flex justify-content-between">
-          <button class="btn-watch">Watch</button>
-          <button class="btn-add">Add to list</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="movie-card p-2">
-          <div class="movie-poster mb-2"></div>
-          <h6>Title</h6>
-          <p class="text-muted small">Description</p>
-          <div class="d-flex justify-content-between">
-            <button class="btn-watch">Watch</button>
-            <button class="btn-add">Add to list</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="movie-card p-2">
-          <div class="movie-poster mb-2"></div>
-          <h6>Title</h6>
-          <p class="text-muted small">Description</p>
-          <div class="d-flex justify-content-between">
-            <button class="btn-watch">Watch</button>
-            <button class="btn-add">Add to list</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="movie-card p-2">
-          <div class="movie-poster mb-2"></div>
-          <h6>Title</h6>
-          <p class="text-muted small">Description</p>
-          <div class="d-flex justify-content-between">
-            <button class="btn-watch">Watch</button>
-            <button class="btn-add">Add to list</button>
-          </div>
-        </div>
-      </div> -->
-
+</div>
 
 <script src="/js/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>

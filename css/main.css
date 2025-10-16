@@ -1,25 +1,19 @@
-/* Hero styling */
-/* .hero {
-    background: url("https://via.placeholder.com/1600x600") no-repeat center center/cover;
-    height: 70vh;
-  }
-  
-  .hero-overlay {
-    background: rgba(0, 0, 0, 0.4);
-    height: 100%;
-  }
-  
-  footer p {
-    font-size: 0.9rem;
-    color: #ccc;
-  } */
-
 /* navbarStyling */
 
   .navbar {
-    color: white;
     background-color: #353535;
+    color: white;
   }
+
+    .nav-link {
+    color: white;
+    font-weight: bold;
+  }
+
+    .nav-link:hover {
+      color: #9e0e0e;
+      font-weight: bold;
+    }
 
   .navbar-brand {
     font-weight: bold;
@@ -29,17 +23,6 @@
   .currentPage {
     color: #9e0e0e !important;
     font-weight: bold;
-  }
-
-  .navText {
-    color: white;
-  }
-
-/* Homepage */
-
-    .HomePageStyle {
-    background-color: #353535;
-    color: white;
   }
 
 /* Sign in and Sign up Styling */
