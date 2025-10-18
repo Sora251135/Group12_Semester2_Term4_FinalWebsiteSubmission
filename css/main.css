@@ -25,6 +25,37 @@
     font-weight: bold;
   }
 
+/*Home Page Styling*/
+
+  .HomePageStyle {
+    background-color: #212121;
+    color: white;
+  }
+
+/*Cards Styling*/
+
+  .card {
+    background-color: #353535;
+    border: none;
+    border-radius: 8px;
+    height: 500px;
+  }
+
+  .card-title {
+    color: white;
+    font-weight: bold;
+  }
+
+  .card-text {
+    color: #d3d3d3;
+    max-height: 1em;
+    overflow: hidden; 
+  }
+
+  .card-body {
+    overflow-y: auto;
+  }
+
 /* Sign in and Sign up Styling */
 
   .FormSection {

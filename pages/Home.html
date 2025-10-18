@@ -10,8 +10,9 @@
     <meta name="keywords" content="RedCurtain, Homepage, Movies">
     <title>HomePage</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
     
 </head>
 
@@ -42,89 +43,102 @@
 
   <!-- End of Navbar -->
 
-   <!-- Hero / Featured Movie/ top section-->
+   <!-- carousel / Featured Movie/ top section-->
+
+<section class="HomePageStyle mt-4 mb-0">
   
-<div id="carouselExample" class="carousel slide">
-    <div class="carousel-inner">
-      <div id="carousel" class="carousel-item active">
-          <!-- Movie posters will auto fill here -->
-      </div>
+  <div id="carouselExample" class="carousel slide">
+      <div class="carousel-inner">
+        <div id="carousel" class="carousel-item active">
+            <!-- Movie posters will auto fill here -->
+        </div>
+          <div id="carousel" class="carousel-item">
+              <!-- Movie posters will auto fill here -->
+          </div>
         <div id="carousel" class="carousel-item">
             <!-- Movie posters will auto fill here -->
         </div>
-      <div id="carousel" class="carousel-item">
-          <!-- Movie posters will auto fill here -->
       </div>
-    </div>
-    
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+      
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
 
-    <section class="HomePageStyle hero position-relative text-white">
-        <div class="hero-overlay d-flex align-items-center">
-            <div id="carouselBadge" class="container">
+      <div class="HomePageStyle hero position-relative text-white">
+          <div class="hero-overlay d-flex align-items-center">
+              <div id="carouselBadge" class="container">
 
-              <!--Movies title,description and ratings will auto fill-->
+                <!--Movies title,description and ratings will auto fill-->
 
-            </div>
-        </div>
-    </section>
-</div>
+              </div>
+          </div>
+      </div>
+  </div>
 
-
-  <section class="HomePageStyle py-5">
+  <div class="HomePageStyle py-5">
     <div class="container">
       <h4 class="mb-4 border-bottom pb-2">POPULAR</h4>
-      <h5 class="mb-4">Welcome <span class="text-danger">USER NAME</span>, here are some shows we think you’ll enjoy</h5>
 
-      <div id="HomeCardBox" class="row g-4">
+      <div id="POPULAR" class="row g-4">
 
         <!--Cards will auto fill here-->
 
       </div>
 
     </div>
-  </section>
+  </div>
   
     <!-- Recommended -->
 
-  <section class="HomePageStyle py-5">
+  <div class="HomePageStyle py-5">
     <div class="container">
       <h4 class="mb-4 border-bottom pb-2">Recommended</h4>
-      <div id="HomeCardBox" class="row g-4">
+      <h5 class="mb-4">Welcome <span class="text-danger">USER NAME</span>, here are some shows we think you’ll enjoy</h5>
+
+      <div id="Recommended" class="row g-4">
 
         <!--Cards will auto fill here-->
 
       </div>
-
     </div>
-  </section>
+  </div>
+  
+</section>
+
+
   
     <!-- Footer -->
-    <footer class="bg-dark text-white py-4 ">
-      <div class="container text-center ">
-        <div>
+
+  <footer class="bg-dark text-white py-4 ">
+    <div class="container text-center">
+      <div class="row align-items-center">
+        <div class="col">
+          <a class="navbar-brand fw-bold text-danger" href="Home.html">
           <img src="/assets/images/RedCurtainLogo.png" alt="Red Curtain" width="150" class="mb-2">
+          </a>
         </div>
-          <div>
-            <p>About Us: <br>Discover what to watch next. Daily capsules, weekend guides, and hand-picked streams that won’t waste your time.</p>
-          </div>
-        <div class="mt-3">
+        <div class="col">
+          <p>About Us: <br>Discover what to watch next. Daily capsules, weekend guides, and hand-picked streams that won’t waste your time.</p>
+        </div>
+        <div class="col mt-3">
           <img src="/assets/images/FooterSocialImages.png" alt="Social Icons" width="150" class="mb-2">
         </div>
       </div>
-    </footer>
+    </div>
+  </footer>
+
+  <!-- End of Footer -->
     
 <script src="/js/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 <!-- Bootstrap Icons -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
 </body>
 
 </html>

@@ -65,7 +65,33 @@ console.log(data);
     carouselMovies.push({image, title, description, rating});
   }
 
+//Loop to make 3 popular movie objects
+
+  let popularMovies = [];
+
+    for (i = 3; i < 6; i++) {
+      let image = `https://image.tmdb.org/t/p/w500${data.results[i].poster_path}`;
+      let title = data.results[i].title;
+      let description = data.results[i].overview;
+
+      popularMovies.push({image, title, description});
+    }
+
+//loop to make 3 recommended movie objects
+
+  let recommendedMovies = [];
+      
+      for (i = 6; i < 9; i++) {
+        let image = `https://image.tmdb.org/t/p/w500${data.results[i].poster_path}`;
+        let title = data.results[i].title;
+        let description = data.results[i].overview;
+
+        recommendedMovies.push({image, title, description});
+      }
+
   console.log(carouselMovies);
+  console.log(popularMovies);
+  console.log(recommendedMovies);
 
 //Take data from API and create 40 movie objects
 
@@ -192,6 +218,59 @@ carouselMovies.forEach(movie => {
       </div>
   `
 })
+
+
+
+//===================================================================================
+
+popularMovies.forEach(movie => {
+
+  const POPULAR = document.getElementById('POPULAR'); 
+  if (!POPULAR) return;
+
+  document.getElementById('POPULAR').innerHTML += ` <div class="col-md-4">
+
+            <div class="card">
+              <img src="${movie.image}" class="card-img-top" alt="..." style="height: 400px; object-fit: cover;">
+              <div class="card-body">
+                <h5 class="card-title">${movie.title}</h5>
+                <p class="card-text">${movie.description}</p>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-danger btn-sm">Watch</button>
+                  <button class="btn btn-dark btn-sm">Add to list</button>
+                </div>
+              </div>
+            </div>
+
+  </div>
+  `
+})
+
+//===================================================================================
+
+recommendedMovies.forEach(movie => {
+
+  const Recommended = document.getElementById('Recommended'); 
+  if (!Recommended) return;
+
+  document.getElementById('Recommended').innerHTML += ` <div class="col-md-4">
+
+            <div class="card">
+              <img src="${movie.image}" class="card-img-top" alt="..." style="height: 400px; object-fit: cover;">
+              <div class="card-body">
+                <h5 class="card-title">${movie.title}</h5>
+                <p class="card-text">${movie.description}</p>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-danger btn-sm">Watch</button>
+                  <button class="btn btn-dark btn-sm">Add to list</button>
+                </div>
+              </div>
+            </div>
+
+  </div>
+  `
+})
+
 
 }();
 
