@@ -1,6 +1,7 @@
 class Movie{
-  constructor(image, year, title, description, rating, link){
+  constructor(image,backdrop, year, title, description, rating, link){
     this.image = image;
+    this.backdrop = backdrop;
     this.year = year;
     this.title = title;
     this.description = description;
@@ -52,18 +53,47 @@ console.log(data);
 
 //end of both api calls
 
+//===================================================================================
+
 //For loop to get 3 movies for carousel
 
-  let carouselMovies = [];
+  let carouselMovies1 = [];
   
-  for (i = 0; i < 3; i++) {
-    let image = `https://image.tmdb.org/t/p/w500${data.results[i].backdrop_path}`;
+  for (i = 0; i < 1; i++) {
+    let backdrop = `https://image.tmdb.org/t/p/w500${data.results[i].backdrop_path}`;
     let title = data.results[i].title;
     let description = data.results[i].overview;
     let rating = data.results[i].vote_average;
+    let image = data.results[i] = `https://image.tmdb.org/t/p/w100${data.results[i].poster_path}`;
 
-    carouselMovies.push({image, title, description, rating});
+    carouselMovies1.push({backdrop, title, description, rating, image});
   }
+
+    let carouselMovies2 = [];
+  
+  for (i = 1; i < 2; i++) {
+    let backdrop = `https://image.tmdb.org/t/p/w500${data.results[i].backdrop_path}`;
+    let title = data.results[i].title;
+    let description = data.results[i].overview;
+    let rating = data.results[i].vote_average;
+    let image = data.results[i] = `https://image.tmdb.org/t/p/w100${data.results[i].poster_path}`;
+
+    carouselMovies2.push({backdrop, title, description, rating, image});
+  }
+
+    let carouselMovies3 = [];
+  
+  for (i = 2; i < 3; i++) {
+    let backdrop = `https://image.tmdb.org/t/p/w500${data.results[i].backdrop_path}`;
+    let title = data.results[i].title;
+    let description = data.results[i].overview;
+    let rating = data.results[i].vote_average;
+    let image = data.results[i] = `https://image.tmdb.org/t/p/w100${data.results[i].poster_path}`;
+
+    carouselMovies3.push({backdrop, title, description, rating, image});
+  }
+
+//===================================================================================
 
 //Loop to make 3 popular movie objects
 
@@ -89,7 +119,10 @@ console.log(data);
         recommendedMovies.push({image, title, description});
       }
 
-  console.log(carouselMovies);
+  console.log(carouselMovies1);
+    console.log(carouselMovies2);
+      console.log(carouselMovies3);
+
   console.log(popularMovies);
   console.log(recommendedMovies);
 
@@ -127,40 +160,6 @@ console.log(movieList);
 
 //===================================================================================
 
-//Filter movies with rating 7.4 and above
-
-let bestMovies = movieList.filter(isHightRated);
-
-console.log(bestMovies);
-
-//create cards for each movie object (within the bestMovie Filter) and display it on the homepage
-
-bestMovies.forEach(movie => {
-
- //if HomeCardBox does not exist then skip over this part of the code (to avoid errors on Movie Library page)  
-  const isHomeCardBox = document.getElementById('HomeCardBox'); 
-  if (!isHomeCardBox) return;
-
-  document.getElementById('HomeCardBox').innerHTML += ` <div class="col-md-4">
-
-            <div class="card">
-              <img src="${movie.image}" class="card-img-top" alt="..." style="height: 400px; object-fit: cover;">
-              <div class="card-body">
-                <h5 class="card-title">${movie.title}</h5>
-                <p class="card-text">${movie.description}</p>
-                <div class="d-flex gap-2">
-                  <button class="btn btn-danger btn-sm">Watch</button>
-                  <button class="btn btn-dark btn-sm">Add to list</button>
-                </div>
-              </div>
-            </div>
-
-  </div>
-  `
-})
-
-//===================================================================================
-
 //Js for Movie Library page
 
 //Generate 40 cards for each movie object and display it on the Movie Library page
@@ -176,10 +175,10 @@ movieList.forEach(movie => {
   <div class="col-md-4">
 
             <div class="card">
-              <img src="${movie.image}" class="card-img-top" alt="..." style="height: 400px; object-fit: cover;">
+              <img src="${movie.image}" class="card-img-top" alt="..." style="height: 600px; object-fit: cover;">
               <div class="card-body">
                 <h5 class="card-title">${movie.title}</h5>
-                <p class="card-text">${movie.description}</p>
+                <p class="card-text scrollable">${movie.description}</p>
                 <div class="d-flex gap-2">
                   <button class="btn btn-danger btn-sm">Watch</button>
                   <button class="btn btn-dark btn-sm">Add to list</button>
@@ -192,35 +191,6 @@ movieList.forEach(movie => {
   }
 })
 
-
-//===================================================================================
-
-//Js for Homepage carousel
-
-//create cards for each movie object and display on homepage
-
-carouselMovies.forEach(movie => {
-  document.getElementById('carousel').innerHTML +=
-  `
-  <img src="${movie.image}" class="d-block w-100" alt="...">
-  `
-
-  document.getElementById('carouselBadge').innerHTML +=
-  `
-      <div class="col-md-5 bg-dark bg-opacity-75 p-3 rounded">
-        <h2>${movie.title}</h2>
-        <p>${movie.description}</p>
-        <p>Rating:${movie.rating}</p>
-          <div class="d-flex gap-2">
-            <button class="btn btn-danger">Watch</button>
-            <button class="btn btn-dark">+ Add list</button>
-          </div>
-      </div>
-  `
-})
-
-
-
 //===================================================================================
 
 popularMovies.forEach(movie => {
@@ -231,10 +201,10 @@ popularMovies.forEach(movie => {
   document.getElementById('POPULAR').innerHTML += ` <div class="col-md-4">
 
             <div class="card">
-              <img src="${movie.image}" class="card-img-top" alt="..." style="height: 400px; object-fit: cover;">
+              <img src="${movie.image}" class="card-img-top" alt="..." style="height: 600px; object-fit: cover;">
               <div class="card-body">
                 <h5 class="card-title">${movie.title}</h5>
-                <p class="card-text">${movie.description}</p>
+                <p class="card-text scrollable">${movie.description}</p>
                 <div class="d-flex gap-2">
                   <button class="btn btn-danger btn-sm">Watch</button>
                   <button class="btn btn-dark btn-sm">Add to list</button>
@@ -256,10 +226,10 @@ recommendedMovies.forEach(movie => {
   document.getElementById('Recommended').innerHTML += ` <div class="col-md-4">
 
             <div class="card">
-              <img src="${movie.image}" class="card-img-top" alt="..." style="height: 400px; object-fit: cover;">
+              <img src="${movie.image}" class="card-img-top" alt="..." style="height: 600px; object-fit: cover;">
               <div class="card-body">
                 <h5 class="card-title">${movie.title}</h5>
-                <p class="card-text">${movie.description}</p>
+                <p class="card-text scrollable">${movie.description}</p>
                 <div class="d-flex gap-2">
                   <button class="btn btn-danger btn-sm">Watch</button>
                   <button class="btn btn-dark btn-sm">Add to list</button>
@@ -271,6 +241,93 @@ recommendedMovies.forEach(movie => {
   `
 })
 
+//===================================================================================
+
+//Js for Homepage carousel
+
+//create cards for each movie object and display on homepage
+
+carouselMovies1.forEach(movie => {
+  document.getElementById('carousel1').innerHTML +=
+  `
+  <img src="${movie.backdrop}" class="d-block w-100" alt="...">
+  `
+
+  document.getElementById('carouselBadge1').innerHTML +=
+  `
+      <div class="col-md-5 bg-dark bg-opacity-75 p-3 rounded">
+        <h2>${movie.title}</h2>
+        <p>${movie.description}</p>
+        <p>Rating: ${movie.rating}</p>
+          <div class="d-flex gap-2">
+            <button class="btn btn-danger">Watch</button>
+            <button class="btn btn-dark">+ Add list</button>
+          </div>
+      </div>
+  `
+})
+
+carouselMovies2.forEach(movie => {
+  document.getElementById('carousel2').innerHTML +=
+  `
+  <img src="${movie.backdrop}" class="d-block w-100" alt="...">
+  `
+
+  document.getElementById('carouselBadge2').innerHTML +=
+  `
+      <div class="col-md-5 bg-dark bg-opacity-75 p-3 rounded">
+        <h2>${movie.title}</h2>
+        <p>${movie.description}</p>
+        <p>Rating: ${movie.rating}</p>
+          <div class="d-flex gap-2">
+            <button class="btn btn-danger">Watch</button>
+            <button class="btn btn-dark">+ Add list</button>
+          </div>
+      </div>
+  `
+})
+
+carouselMovies3.forEach(movie => {
+  document.getElementById('carousel3').innerHTML +=
+  `
+  <img src="${movie.backdrop}" class="d-block w-100" alt="...">
+  `
+
+  document.getElementById('carouselBadge3').innerHTML +=
+  `
+      <div class="col-md-5 bg-dark bg-opacity-75 p-3 rounded">
+        <h2>${movie.title}</h2>
+        <p>${movie.description}</p>
+        <p>Rating: ${movie.rating}</p>
+          <div class="d-flex gap-2">
+            <button class="btn btn-danger">Watch</button>
+            <button class="btn btn-dark">+ Add list</button>
+          </div>
+      </div>
+  `
+})
+//turbo poop script for the carousel
+
+// Grab the three badges (Where the movies details are displayed)
+const badges = [
+  document.getElementById('carouselBadge1'),
+  document.getElementById('carouselBadge2'),
+  document.getElementById('carouselBadge3'),
+];
+
+//Get the carousel itself
+const carouselEl = document.getElementById('carouselExample');
+
+//When the carousel finishes sliding
+carouselEl.addEventListener('slid.bs.carousel', function(e) {
+  const newIndex = e.to; 
+  badges.forEach((badgeEl, idx) => {
+    badgeEl.style.display = idx === newIndex ? 'block' : 'none';
+  });
+});
+
+//On the initial load of the page make sure only the first is visible
+badges.forEach((b, i) => b.style.display = i === 0 ? 'block' : 'none');
 
 }();
 
