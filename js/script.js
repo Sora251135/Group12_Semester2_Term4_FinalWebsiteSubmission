@@ -12,7 +12,7 @@ class Movie{
 
 //Function to filter movies with rating 7.4 and above
 
-function isHightRated(movie){
+function isHighRated(movie){
   return movie.rating >= 7.4;
 }
 
@@ -116,7 +116,7 @@ console.log(data);
         let title = data.results[i].title;
         let description = data.results[i].overview;
 
-        recommendedMovies.push({image, title, description});
+        recommendedMovies.push(window["Recommended_" + i] = new Movie(image, title, description));
       }
 
   console.log(carouselMovies1);
@@ -247,6 +247,9 @@ recommendedMovies.forEach(movie => {
 
 //create cards for each movie object and display on homepage
 
+  const Carousel1 = document.getElementById('carousel1'); 
+  if (!Carousel1) return;
+
 carouselMovies1.forEach(movie => {
   document.getElementById('carousel1').innerHTML +=
   `
@@ -266,6 +269,9 @@ carouselMovies1.forEach(movie => {
       </div>
   `
 })
+
+  const Carousel2 = document.getElementById('carousel1'); 
+  if (!Carousel2) return;
 
 carouselMovies2.forEach(movie => {
   document.getElementById('carousel2').innerHTML +=
@@ -287,6 +293,9 @@ carouselMovies2.forEach(movie => {
   `
 })
 
+  const Carousel3 = document.getElementById('carousel1'); 
+  if (!Carousel3) return;
+
 carouselMovies3.forEach(movie => {
   document.getElementById('carousel3').innerHTML +=
   `
@@ -306,6 +315,7 @@ carouselMovies3.forEach(movie => {
       </div>
   `
 })
+
 //turbo poop script for the carousel
 
 // Grab the three badges (Where the movies details are displayed)
@@ -318,17 +328,52 @@ const badges = [
 //Get the carousel itself
 const carouselEl = document.getElementById('carouselExample');
 
-//When the carousel finishes sliding
-carouselEl.addEventListener('slid.bs.carousel', function(e) {
-  const newIndex = e.to; 
-  badges.forEach((badgeEl, idx) => {
-    badgeEl.style.display = idx === newIndex ? 'block' : 'none';
+//When the carousel finishes sliding, update which badge is visible
+carouselEl.addEventListener('slid.bs.carousel', function(whichSlide) {
+  const newIndex = whichSlide.to; 
+  badges.forEach((badgeEl, index) => {
+    badgeEl.style.display = index === newIndex ? 'block' : 'none';
   });
 });
 
-//On the initial load of the page make sure only the first is visible
-badges.forEach((b, i) => b.style.display = i === 0 ? 'block' : 'none');
+//On the initial load of the page make sure only the first slide is visible
+badges.forEach((badge, i) => badge.style.display = i === 0 ? 'block' : 'none');
 
+//===================================================================================
+
+//Js for Movie Watchlist page
+
+const bestMovies = movieList.filter(isHighRated);
+console.log(bestMovies);
+
+bestMovies.forEach(movie => {
+
+  //check if CardBox exists if not then skip over this part of the code (to avoid errors on homepage)
+  const isWatchlist = document.getElementById('Watchlist'); 
+  if (isWatchlist) {
+
+  document.getElementById('Watchlist').innerHTML += 
+  `
+  <div class="col-md-4">
+
+            <div class="card">
+              <img src="${movie.image}" class="card-img-top" alt="..." style="height: 600px; object-fit: cover;">
+              <div class="card-body">
+                <h5 class="card-title">${movie.title}</h5>
+                <p class="card-text scrollable">${movie.description}</p>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-danger btn-sm">Watch</button>
+                  <button class="btn btn-dark btn-sm">Add to list</button>
+                </div>
+              </div>
+            </div>
+
+  </div>
+  `
+  }
+})
+
+//For API JS keep code within this function scope
 }();
 
 //===================================================================================
