@@ -28,10 +28,10 @@
     letter-spacing: 1px;
   }
 
- /* .currentPage {
+  .currentPage {
     color: #9e0e0e !important;
     font-weight: bold;
-  } */  
+  }
 
   .navbar-toggler {
     background-color: #353535;
