@@ -28,12 +28,13 @@
     margin-top: 5%;
     margin-bottom: 5%;
     padding: 2%;
-    background-color: #353535;
     color: white;
     border-radius: 10px;
   }
 
     .IndividualMovie h1 {
+      display: flex;
+      justify-content: center;
       font-size: 3em;
       font-weight: bold;
       margin-bottom: 20px;
