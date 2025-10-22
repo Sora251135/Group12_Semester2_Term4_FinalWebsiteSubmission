@@ -1,0 +1,25 @@
+ .navbar {
+    padding: 1%;
+    background-color: #353535;
+    color: white;
+  }
+
+    .nav-link {
+    color: white;
+    font-weight: bold;
+  }
+
+    .nav-link:hover {
+      color: #9e0e0e;
+      font-weight: bold;
+    }
+
+  .navbar-brand {
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .currentPage {
+    color: #9e0e0e !important;
+    font-weight: bold;
+  }
