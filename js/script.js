@@ -116,7 +116,7 @@ console.log(data);
         let title = data.results[i].title;
         let description = data.results[i].overview;
 
-        recommendedMovies.push(window["Recommended_" + i] = new Movie(image, title, description));
+        recommendedMovies.push({image, title, description});
       }
 
   console.log(carouselMovies1);
@@ -341,37 +341,37 @@ badges.forEach((badge, i) => badge.style.display = i === 0 ? 'block' : 'none');
 
 //===================================================================================
 
-//Js for Movie Watchlist page
+// //Js for Movie Watchlist page
 
-const bestMovies = movieList.filter(isHighRated);
-console.log(bestMovies);
+// const bestMovies = movieList.filter(isHighRated);
+// console.log(bestMovies);
 
-bestMovies.forEach(movie => {
+// bestMovies.forEach(movie => {
 
-  //check if CardBox exists if not then skip over this part of the code (to avoid errors on homepage)
-  const isWatchlist = document.getElementById('Watchlist'); 
-  if (isWatchlist) {
+//   //check if CardBox exists if not then skip over this part of the code (to avoid errors on homepage)
+//   const isWatchlist = document.getElementById('Watchlist'); 
+//   if (isWatchlist) {
 
-  document.getElementById('Watchlist').innerHTML += 
-  `
-  <div class="col-md-4">
+//   document.getElementById('Watchlist').innerHTML += 
+//   `
+//   <div class="col-md-4">
 
-            <div class="card">
-              <img src="${movie.image}" class="card-img-top" alt="..." style="height: 600px; object-fit: cover;">
-              <div class="card-body">
-                <h5 class="card-title">${movie.title}</h5>
-                <p class="card-text scrollable">${movie.description}</p>
-                <div class="d-flex gap-2">
-                  <button class="btn btn-danger btn-sm">Watch</button>
-                  <button class="btn btn-dark btn-sm">Add to list</button>
-                </div>
-              </div>
-            </div>
+//             <div class="card">
+//               <img src="${movie.image}" class="card-img-top" alt="..." style="height: 600px; object-fit: cover;">
+//               <div class="card-body">
+//                 <h5 class="card-title">${movie.title}</h5>
+//                 <p class="card-text scrollable">${movie.description}</p>
+//                 <div class="d-flex gap-2">
+//                   <button class="btn btn-danger btn-sm">Watch</button>
+//                   <button class="btn btn-dark btn-sm">Add to list</button>
+//                 </div>
+//               </div>
+//             </div>
 
-  </div>
-  `
-  }
-})
+//   </div>
+//   `
+//   }
+// })
 
 //For API JS keep code within this function scope
 }();

@@ -158,7 +158,8 @@
 /*Movie Watchlist Styling */
   
   .Moviewatchlist {
-    background-color: #212121;
+    background-color: #363636;
     color: white;
-    height: 500px;
+    height: 700px;
+    width: 100%;
   }
