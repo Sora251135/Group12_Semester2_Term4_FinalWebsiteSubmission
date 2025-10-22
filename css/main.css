@@ -24,7 +24,27 @@
     font-weight: bold;
   }
 
+.IndividualMovie {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding: 2%;
+    background-color: #353535;
+    color: white;
+    border-radius: 10px;
+  }
 
-.IndividualMovie{
-  background-color: black;
-}
+    .IndividualMovie h1 {
+      font-size: 3em;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .IndividualMovie h3 {
+      font-size: 1.5em;
+      margin-bottom: 15px;
+    }
+
+    .IndividualMovie h4 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
