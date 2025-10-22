@@ -1,12 +1,12 @@
 class Movie{
-  constructor(image,backdrop, year, title, description, rating, link){
+  constructor(image, year, title, description, rating, link, backdrop){
     this.image = image;
-    this.backdrop = backdrop;
     this.year = year;
     this.title = title;
     this.description = description;
     this.rating = rating;
     this.link = link;
+    this.backdrop = backdrop;
   }
 }
 
@@ -253,7 +253,7 @@ recommendedMovies.forEach(movie => {
 carouselMovies1.forEach(movie => {
   document.getElementById('carousel1').innerHTML +=
   `
-  <img src="${movie.backdrop}" class="d-block w-100" alt="...">
+  <img src="${movie.backdrop}" class="d-block" style="width: 100%; object-fit: cover;" alt="...">
   `
 
   document.getElementById('carouselBadge1').innerHTML +=

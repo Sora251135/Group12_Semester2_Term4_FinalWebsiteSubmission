@@ -1,7 +1,17 @@
 /*General Styling*/
  
  .BackgroundAndText {
-    background-color: #212121;
+
+  background-color: #212121;
+  background-image: linear-gradient(
+    to bottom right,
+    #212121,
+    #720a0a,
+    #424242
+  );
+    
+    min-height: 100vh;
+    margin: 0;
     color: white;
   }
 
