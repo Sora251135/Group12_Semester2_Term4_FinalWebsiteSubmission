@@ -47,15 +47,15 @@
     }
 
     .IndividualMovie h3 {
-      flex-direction: column-reverse;
-      justify-content: space-between;
+       display: flex;
+      justify-content: center;
       font-size: 1.5em;
       margin-bottom: 15px;
     }
 
     .IndividualMovie h4 {
-      flex-direction: column-reverse;
-      justify-content: space-between;
+       display: flex;
+      justify-content: center;
       font-size: 1.2em;
       margin-bottom: 10px;
     }
