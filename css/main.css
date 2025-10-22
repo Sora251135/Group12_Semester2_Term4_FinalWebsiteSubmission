@@ -20,7 +20,7 @@
   }
   
  .BackgroundAndText {
-     background-color: #888;
+     background-color: #3d3d3d;
     min-height: 100vh;
     padding-bottom: 5%;
   }
@@ -34,7 +34,7 @@
     margin-top: 5%;
     margin-bottom: 5%;
     padding: 2%;
-    color: white;
+    color: rgb(0, 0, 0);
     border-radius: 10px;
   }
 
