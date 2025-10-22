@@ -6,7 +6,7 @@
   background-image: linear-gradient(
     to bottom right,
     #212121,
-    #720a0a,
+    #340b0b,
     #424242
   );
     
@@ -132,7 +132,7 @@
     background-color: #9e0e0e;
     padding: 3%;
     border-radius: 8px;
-    height: 700px
+    height: 800px
   }
  
   .SignInSignUpInput {

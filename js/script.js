@@ -1,3 +1,11 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const displayEl = document.getElementById('displayName');
+  if (displayEl) {
+    const saved = localStorage.getItem('userName');
+    displayEl.textContent = saved || '';
+  }
+});
+
 class Movie{
   constructor(image, year, title, description, rating, link, backdrop){
     this.image = image;
@@ -382,6 +390,18 @@ badges.forEach((badge, i) => badge.style.display = i === 0 ? 'block' : 'none');
 
 // Toggle between Sign In and Sign Up forms using jQuery black magic (also changes the page title)
 
+//Save data to use on the home page
+
+let username;
+
+document.getElementById('sign-in-form').addEventListener('submit', async function(event) {
+  event.preventDefault();
+  const username = document.getElementById('signInUserName').value;
+
+    localStorage.setItem('userName', username);
+    window.location.href = "/pages/Home.html";
+});
+
 $(function(){
 
   var $signIn  = $('#sign-in-form'),
@@ -412,6 +432,8 @@ $(function(){
   });
 });
 
-//end of Sign in and Sign up page script.js
+
+
+//End of Sign in and Sign up page script.js
 
 //===================================================================================//
