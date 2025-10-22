@@ -1,3 +1,10 @@
+/*General Styling*/
+ 
+ .BackgroundAndText {
+    background-color: #212121;
+    color: white;
+  }
+
 /* navbarStyling */
 
   .navbar {
@@ -26,14 +33,16 @@
     font-weight: bold;
   }
 
-
-/*Home Page Styling*/
-
-  .HomePageStyle {
-    background-color: #212121;
-    color: white;
+  .navbar-toggler {
+    background-color: #353535;
+    color: #9e0e0e;
+    border-color: rgb(0, 0, 0);
   }
 
+  .navbar-toggler-icon {
+    color: #353535;
+  }
+  
 
 /* Carousel Styling */
 
@@ -115,11 +124,6 @@
     border-radius: 8px;
     height: 700px
   }
-
-  .SignUpSignIn {
-    background-color: #353535;
-    color: white;
-  }
  
   .SignInSignUpInput {
     text-align: left;
@@ -151,3 +155,10 @@
     margin: 2%;
   }
 
+/*Movie Watchlist Styling */
+  
+  .Moviewatchlist {
+    background-color: #212121;
+    color: white;
+    height: 500px;
+  }
