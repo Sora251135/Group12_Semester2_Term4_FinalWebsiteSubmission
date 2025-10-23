@@ -98,6 +98,18 @@
     overflow-y: auto;
   }
 
+  /*Card buttons*/
+
+  .btn {
+    width: 50%;
+    height: 50px;
+  }
+
+  .redButtonText {
+    text-decoration: none;
+    color: white
+  }
+
   /*Overflow/Scrollbar Styles on the cards*/
 
 .scrollable {
@@ -172,4 +184,10 @@
     color: white;
     height: 700px;
     width: 100%;
+  }
+
+/* Individual Movie Page Styling */
+
+  .IndividualMovie {
+
   }

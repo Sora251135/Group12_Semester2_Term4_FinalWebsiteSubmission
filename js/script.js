@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const displayEl = document.getElementById('displayName');
   if (displayEl) {
     const saved = localStorage.getItem('userName');
-    displayEl.textContent = saved || '';
+    displayEl.textContent = saved || 'User';
   }
 });
 
@@ -188,7 +188,7 @@ movieList.forEach(movie => {
                 <h5 class="card-title">${movie.title}</h5>
                 <p class="card-text scrollable">${movie.description}</p>
                 <div class="d-flex gap-2">
-                  <button class="btn btn-danger btn-sm">Watch</button>
+                  <button class="btn btn-danger btn-sm"><a class="redButtonText" href="individual Movie.html">Watch</a></button>
                   <button class="btn btn-dark btn-sm">Add to list</button>
                 </div>
               </div>
@@ -214,7 +214,7 @@ popularMovies.forEach(movie => {
                 <h5 class="card-title">${movie.title}</h5>
                 <p class="card-text scrollable">${movie.description}</p>
                 <div class="d-flex gap-2">
-                  <button class="btn btn-danger btn-sm">Watch</button>
+                  <button class="btn btn-danger btn-sm"><a class="redButtonText" href="individual Movie.html">Watch</a></button>
                   <button class="btn btn-dark btn-sm">Add to list</button>
                 </div>
               </div>
@@ -239,7 +239,7 @@ recommendedMovies.forEach(movie => {
                 <h5 class="card-title">${movie.title}</h5>
                 <p class="card-text scrollable">${movie.description}</p>
                 <div class="d-flex gap-2">
-                  <button class="btn btn-danger btn-sm">Watch</button>
+                  <button class="btn btn-danger btn-sm"><a class="redButtonText" href="individual Movie.html">Watch</a></button>
                   <button class="btn btn-dark btn-sm">Add to list</button>
                 </div>
               </div>
@@ -271,7 +271,7 @@ carouselMovies1.forEach(movie => {
         <p>${movie.description}</p>
         <p>Rating: ${movie.rating}</p>
           <div class="d-flex gap-2">
-            <button class="btn btn-danger">Watch</button>
+            <button class="btn btn-danger"><a class="redButtonText" href="individual Movie.html">Watch</a></button>
             <button class="btn btn-dark">+ Add list</button>
           </div>
       </div>
@@ -294,7 +294,7 @@ carouselMovies2.forEach(movie => {
         <p>${movie.description}</p>
         <p>Rating: ${movie.rating}</p>
           <div class="d-flex gap-2">
-            <button class="btn btn-danger">Watch</button>
+            <button class="btn btn-danger"><a class="redButtonText" href="individual Movie.html">Watch</a></button>
             <button class="btn btn-dark">+ Add list</button>
           </div>
       </div>
@@ -317,7 +317,7 @@ carouselMovies3.forEach(movie => {
         <p>${movie.description}</p>
         <p>Rating: ${movie.rating}</p>
           <div class="d-flex gap-2">
-            <button class="btn btn-danger">Watch</button>
+            <button class="btn btn-danger"><a class="redButtonText" href="individual Movie.html">Watch</a></button>
             <button class="btn btn-dark">+ Add list</button>
           </div>
       </div>
@@ -334,10 +334,10 @@ const badges = [
 ];
 
 //Get the carousel itself
-const carouselEl = document.getElementById('carouselExample');
+const CarouselMain = document.getElementById('carouselExample');
 
-//When the carousel finishes sliding, update which badge is visible
-carouselEl.addEventListener('slid.bs.carousel', function(whichSlide) {
+//When the carousel finishes sliding, update which badge is visible depending on which slide the carousel is on
+CarouselMain.addEventListener('slid.bs.carousel', function(whichSlide) {
   const newIndex = whichSlide.to; 
   badges.forEach((badgeEl, index) => {
     badgeEl.style.display = index === newIndex ? 'block' : 'none';
@@ -380,6 +380,12 @@ badges.forEach((badge, i) => badge.style.display = i === 0 ? 'block' : 'none');
 //   `
 //   }
 // })
+
+//===================================================================================
+
+//code for the individual movie page
+
+
 
 //For API JS keep code within this function scope
 }();
