@@ -56,6 +56,12 @@
 
 /* Carousel Styling */
 
+.carousel-badge{
+  margin-left: 20%;
+  margin-right: 20%;
+  width: 60%;
+}
+
 .carousel-item {
   position: relative;
 }

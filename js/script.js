@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 class Movie{
-  constructor(image, year, title, description, rating, link, backdrop){
+  constructor(image, year, title, description, rating, link, backdrop,id){
     this.image = image;
     this.year = year;
     this.title = title;
@@ -15,6 +15,7 @@ class Movie{
     this.rating = rating;
     this.link = link;
     this.backdrop = backdrop;
+    this.id = id;
   }
 }
 
@@ -23,6 +24,8 @@ class Movie{
 function isHighRated(movie){
   return movie.rating >= 7.4;
 }
+
+
 
 //Fetch data from API twice to get 40 movies total
 
@@ -61,79 +64,6 @@ console.log(data);
 
 //end of both api calls
 
-//===================================================================================
-
-//For loop to get 3 movies for carousel
-
-  let carouselMovies1 = [];
-  
-  for (i = 0; i < 1; i++) {
-    let backdrop = `https://image.tmdb.org/t/p/w500${data.results[i].backdrop_path}`;
-    let title = data.results[i].title;
-    let description = data.results[i].overview;
-    let rating = data.results[i].vote_average;
-    let image = data.results[i] = `https://image.tmdb.org/t/p/w100${data.results[i].poster_path}`;
-
-    carouselMovies1.push({backdrop, title, description, rating, image});
-  }
-
-    let carouselMovies2 = [];
-  
-  for (i = 1; i < 2; i++) {
-    let backdrop = `https://image.tmdb.org/t/p/w500${data.results[i].backdrop_path}`;
-    let title = data.results[i].title;
-    let description = data.results[i].overview;
-    let rating = data.results[i].vote_average;
-    let image = data.results[i] = `https://image.tmdb.org/t/p/w100${data.results[i].poster_path}`;
-
-    carouselMovies2.push({backdrop, title, description, rating, image});
-  }
-
-    let carouselMovies3 = [];
-  
-  for (i = 2; i < 3; i++) {
-    let backdrop = `https://image.tmdb.org/t/p/w500${data.results[i].backdrop_path}`;
-    let title = data.results[i].title;
-    let description = data.results[i].overview;
-    let rating = data.results[i].vote_average;
-    let image = data.results[i] = `https://image.tmdb.org/t/p/w100${data.results[i].poster_path}`;
-
-    carouselMovies3.push({backdrop, title, description, rating, image});
-  }
-
-//===================================================================================
-
-//Loop to make 3 popular movie objects
-
-  let popularMovies = [];
-
-    for (i = 3; i < 6; i++) {
-      let image = `https://image.tmdb.org/t/p/w500${data.results[i].poster_path}`;
-      let title = data.results[i].title;
-      let description = data.results[i].overview;
-
-      popularMovies.push({image, title, description});
-    }
-
-//loop to make 3 recommended movie objects
-
-  let recommendedMovies = [];
-      
-      for (i = 6; i < 9; i++) {
-        let image = `https://image.tmdb.org/t/p/w500${data.results[i].poster_path}`;
-        let title = data.results[i].title;
-        let description = data.results[i].overview;
-
-        recommendedMovies.push({image, title, description});
-      }
-
-  console.log(carouselMovies1);
-    console.log(carouselMovies2);
-      console.log(carouselMovies3);
-
-  console.log(popularMovies);
-  console.log(recommendedMovies);
-
 //Take data from API and create 40 movie objects
 
   let movieList = [];
@@ -146,8 +76,10 @@ console.log(data);
     let description = data2.results[i].overview;
     let rating = data2.results[i].vote_average;
     let link = `https://www.themoviedb.org/movie/${data2.results[i].id}`;
+    let backdrop = `https://image.tmdb.org/t/p/w500${data2.results[i].backdrop_path}`;
+    let id = data2.results[i].id;
 
-    movieList.push(window["movie_" + i] = new Movie(image, year, title, description, rating, link));
+    movieList.push(window["movie_" + i] = new Movie(image, year, title, description, rating, link, backdrop,id));
 
   }  
 
@@ -159,8 +91,10 @@ console.log(data);
     let description = data.results[i].overview;
     let rating = data.results[i].vote_average;
     let link = `https://www.themoviedb.org/movie/${data.results[i].id}`;
+    let backdrop = `https://image.tmdb.org/t/p/w500${data.results[i].backdrop_path}`;
+    let id = data.results[i].id;
 
-    movieList.push(window["movie_" + i] = new Movie(image, year, title, description, rating, link));
+    movieList.push(window["movie_" + i] = new Movie(image, year, title, description, rating, link,backdrop,id));
 
   }
 
@@ -168,96 +102,56 @@ console.log(movieList);
 
 //===================================================================================
 
+//splice to get 3 movies for carousel
+
+    let carouselMovies1 = movieList.splice(0,1);
+  
+  console.log(carouselMovies1);
+
+    let carouselMovies2 = movieList.splice(0,1);
+  
+  console.log(carouselMovies2);
+
+    let carouselMovies3 = movieList.splice(0,1);
+
+  console.log(carouselMovies3);
+
+//===================================================================================
+
+//Splice to make 3 popular movie objects
+
+  let popularMovies = movieList.splice(0,3);
+
+console.log(popularMovies);
+
+//===================================================================================
+
+//Splice to make 3 recommended movie objects
+
+  let recommendedMovies = movieList.splice(0,3);
+      
+console.log(recommendedMovies);
+
+//===================================================================================
+
 //Js for Movie Library page
-
-//Generate 40 cards for each movie object and display it on the Movie Library page
-
-movieList.forEach(movie => {
-
-  //check if CardBox exists if not then skip over this part of the code (to avoid errors on homepage)
-  const isCardBox = document.getElementById('CardBox'); 
-  if (isCardBox) {
-
-  document.getElementById('CardBox').innerHTML += 
-  `
-  <div class="col-md-4">
-
-            <div class="card">
-              <img src="${movie.image}" class="card-img-top" alt="..." style="height: 600px; object-fit: cover;">
-              <div class="card-body">
-                <h5 class="card-title">${movie.title}</h5>
-                <p class="card-text scrollable">${movie.description}</p>
-                <div class="d-flex gap-2">
-                  <button class="btn btn-danger btn-sm"><a class="redButtonText" href="individual Movie.html">Watch</a></button>
-                  <button class="btn btn-dark btn-sm">Add to list</button>
-                </div>
-              </div>
-            </div>
-
-  </div>
-  `
-  }
-})
-
-//===================================================================================
-
-popularMovies.forEach(movie => {
-
-  const POPULAR = document.getElementById('POPULAR'); 
-  if (!POPULAR) return;
-
-  document.getElementById('POPULAR').innerHTML += ` <div class="col-md-4">
-
-            <div class="card">
-              <img src="${movie.image}" class="card-img-top" alt="..." style="height: 600px; object-fit: cover;">
-              <div class="card-body">
-                <h5 class="card-title">${movie.title}</h5>
-                <p class="card-text scrollable">${movie.description}</p>
-                <div class="d-flex gap-2">
-                  <button class="btn btn-danger btn-sm"><a class="redButtonText" href="individual Movie.html">Watch</a></button>
-                  <button class="btn btn-dark btn-sm">Add to list</button>
-                </div>
-              </div>
-            </div>
-
-  </div>
-  `
-})
-
-//===================================================================================
-
-recommendedMovies.forEach(movie => {
-
-  const Recommended = document.getElementById('Recommended'); 
-  if (!Recommended) return;
-
-  document.getElementById('Recommended').innerHTML += ` <div class="col-md-4">
-
-            <div class="card">
-              <img src="${movie.image}" class="card-img-top" alt="..." style="height: 600px; object-fit: cover;">
-              <div class="card-body">
-                <h5 class="card-title">${movie.title}</h5>
-                <p class="card-text scrollable">${movie.description}</p>
-                <div class="d-flex gap-2">
-                  <button class="btn btn-danger btn-sm"><a class="redButtonText" href="individual Movie.html">Watch</a></button>
-                  <button class="btn btn-dark btn-sm">Add to list</button>
-                </div>
-              </div>
-            </div>
-
-  </div>
-  `
-})
-
-//===================================================================================
 
 //Js for Homepage carousel
 
 //create cards for each movie object and display on homepage
 
-  const Carousel1 = document.getElementById('carousel1'); 
-  if (!Carousel1) return;
+function homeLoad(){
+    function PassID(ID){
 
+  Watchlist.push(ID);
+
+}
+}
+
+  const Carousel1 = document.getElementById('carousel1'); 
+
+  if (!Carousel1) return;
+  
 carouselMovies1.forEach(movie => {
   document.getElementById('carousel1').innerHTML +=
   `
@@ -272,7 +166,7 @@ carouselMovies1.forEach(movie => {
         <p>Rating: ${movie.rating}</p>
           <div class="d-flex gap-2">
             <button class="btn btn-danger"><a class="redButtonText" href="individual Movie.html">Watch</a></button>
-            <button class="btn btn-dark">+ Add list</button>
+            <button class="btn btn-dark" onclick="PassID(${movie.id})">+ Add list</button>
           </div>
       </div>
   `
@@ -295,7 +189,7 @@ carouselMovies2.forEach(movie => {
         <p>Rating: ${movie.rating}</p>
           <div class="d-flex gap-2">
             <button class="btn btn-danger"><a class="redButtonText" href="individual Movie.html">Watch</a></button>
-            <button class="btn btn-dark">+ Add list</button>
+            <button class="btn btn-dark" onclick="PassID(${movie.id})">+ Add list</button>
           </div>
       </div>
   `
@@ -318,15 +212,94 @@ carouselMovies3.forEach(movie => {
         <p>Rating: ${movie.rating}</p>
           <div class="d-flex gap-2">
             <button class="btn btn-danger"><a class="redButtonText" href="individual Movie.html">Watch</a></button>
-            <button class="btn btn-dark">+ Add list</button>
+            <button class="btn btn-dark" onclick="PassID(${movie.id})">+ Add list</button>
           </div>
       </div>
   `
 })
 
-//turbo poop script for the carousel
+//Generate 40 cards for each movie object and display it on the Movie Library page
+console.log(movieList);
 
-// Grab the three badges (Where the movies details are displayed)
+movieList.forEach(movie => {
+
+  //check if CardBox exists if not then skip over this part of the code (to avoid errors on homepage)
+  const isCardBox = document.getElementById('CardBox'); 
+  if (!isCardBox) return;
+
+  document.getElementById('CardBox').innerHTML += ` <div class="col-md-4">
+
+            <div class="card">
+              <img src="${movie.image}" class="card-img-top" alt="..." style="height: 600px; object-fit: cover;">
+              <div class="card-body">
+                <h5 class="card-title">${movie.title}</h5>
+                <p class="card-text scrollable">${movie.description}</p>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-danger btn-sm"><a class="redButtonText" href="individual Movie.html">Watch</a></button>
+                  <button class="btn btn-dark btn-sm" onclick="PassID(${movie.id})">Add to list</button>
+                </div>
+              </div>
+            </div>
+
+  </div>
+  `
+})
+
+// //===================================================================================
+
+popularMovies.forEach(movie => {
+
+  const POPULAR = document.getElementById('POPULAR'); 
+  if (!POPULAR) return;
+
+  document.getElementById('POPULAR').innerHTML += ` <div class="col-md-4">
+
+            <div class="card">
+              <img src="${movie.image}" class="card-img-top" alt="..." style="height: 600px; object-fit: cover;">
+              <div class="card-body">
+                <h5 class="card-title">${movie.title}</h5>
+                <p class="card-text scrollable">${movie.description}</p>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-danger btn-sm"><a class="redButtonText" href="individual Movie.html">Watch</a></button>
+                  <button class="btn btn-dark btn-sm" onclick="PassID(${movie.id})">Add to list</button>
+                </div>
+              </div>
+            </div>
+
+  </div>
+  `
+})
+
+// //===================================================================================
+
+recommendedMovies.forEach(movie => {
+
+  const Recommended = document.getElementById('Recommended'); 
+  if (!Recommended) return;
+
+  document.getElementById('Recommended').innerHTML += ` <div class="col-md-4">
+
+            <div class="card">
+              <img src="${movie.image}" class="card-img-top" alt="..." style="height: 600px; object-fit: cover;">
+              <div class="card-body">
+                <h5 class="card-title">${movie.title}</h5>
+                <p class="card-text scrollable">${movie.description}</p>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-danger btn-sm"><a class="redButtonText" href="individual Movie.html">Watch</a></button>
+                  <button class="btn btn-dark btn-sm" onclick="PassID(${movie.id})">Add to list</button>
+                </div>
+              </div>
+            </div>
+
+  </div>
+  `
+})
+
+//===================================================================================
+
+// //turbo poop script for the carousel
+
+// // Grab the three badges (Where the movies details are displayed)
 const badges = [
   document.getElementById('carouselBadge1'),
   document.getElementById('carouselBadge2'),
@@ -351,62 +324,27 @@ badges.forEach((badge, i) => badge.style.display = i === 0 ? 'block' : 'none');
 
 // //Js for Movie Watchlist page
 
-// const bestMovies = movieList.filter(isHighRated);
-// console.log(bestMovies);
+const Watchlist = [];    
 
-// bestMovies.forEach(movie => {
 
-//   //check if CardBox exists if not then skip over this part of the code (to avoid errors on homepage)
-//   const isWatchlist = document.getElementById('Watchlist'); 
-//   if (isWatchlist) {
 
-//   document.getElementById('Watchlist').innerHTML += 
-//   `
-//   <div class="col-md-4">
-
-//             <div class="card">
-//               <img src="${movie.image}" class="card-img-top" alt="..." style="height: 600px; object-fit: cover;">
-//               <div class="card-body">
-//                 <h5 class="card-title">${movie.title}</h5>
-//                 <p class="card-text scrollable">${movie.description}</p>
-//                 <div class="d-flex gap-2">
-//                   <button class="btn btn-danger btn-sm">Watch</button>
-//                   <button class="btn btn-dark btn-sm">Add to list</button>
-//                 </div>
-//               </div>
-//             </div>
-
-//   </div>
-//   `
-//   }
-// })
+console.log(PassID);
+console.log(Watchlist);
 
 //===================================================================================
 
 //code for the individual movie page
 
 
+//===================================================================================
 
 //For API JS keep code within this function scope
-}();
 
-//===================================================================================
+}();
 
 //Start of Sign Up and Sign in page script.js
 
-// Toggle between Sign In and Sign Up forms using jQuery black magic (also changes the page title)
-
-//Save data to use on the home page
-
-let username;
-
-document.getElementById('sign-in-form').addEventListener('submit', async function(event) {
-  event.preventDefault();
-  const username = document.getElementById('signInUserName').value;
-
-    localStorage.setItem('userName', username);
-    window.location.href = "/pages/Home.html";
-});
+  // Toggle between Sign In and Sign Up forms using jQuery black magic (also changes the page title)
 
 $(function(){
 
@@ -437,8 +375,6 @@ $(function(){
     }
   });
 });
-
-
 
 //End of Sign in and Sign up page script.js
 

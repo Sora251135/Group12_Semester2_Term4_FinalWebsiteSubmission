@@ -12,6 +12,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
+    <script type="module" src="/js/fb.js" defer></script>
     
 </head>
 
@@ -43,7 +44,6 @@
   <!-- End of Navbar -->
 
 <section class ="FormSection container my-5">
-  
   <div id="auth-container" class="text-center">
 
     <!-- Sign In form-->
@@ -53,10 +53,10 @@
         <img src="/assets/images/RedCurtainLogo.png" alt="Red Curtain" width="300" class="mb-4">
       </div>
         <input type="text" class="SignInSignUpInput" id="signInUserName" placeholder="Name" required>
-        <input type="email" class="SignInSignUpInput" placeholder="Email" required>
-        <input type="password" class="SignInSignUpInput" placeholder="Password" required>
+        <input type="email" class="SignInSignUpInput" id="signInEmail" placeholder="Email" required>
+        <input type="password" class="SignInSignUpInput" id="singInPassword" placeholder="Password" required>
           <div>
-            <button type="submit" class="SignInSignUpButtons">Sign In</button>
+            <button type="submit" class="SignInSignUpButtons" id="submit">Sign In</button>
           </div>
     </form>
 
