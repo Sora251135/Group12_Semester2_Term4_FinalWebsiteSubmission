@@ -140,13 +140,13 @@ console.log(recommendedMovies);
 
 //create cards for each movie object and display on homepage
 
-function homeLoad(){
-    function PassID(ID){
+// function homeLoad(){
+//     function PassID(ID){
 
-  Watchlist.push(ID);
+//   Watchlist.push(ID);
 
-}
-}
+// }
+// }
 
   const Carousel1 = document.getElementById('carousel1'); 
 
@@ -172,7 +172,7 @@ carouselMovies1.forEach(movie => {
   `
 })
 
-  const Carousel2 = document.getElementById('carousel1'); 
+  const Carousel2 = document.getElementById('carousel2'); 
   if (!Carousel2) return;
 
 carouselMovies2.forEach(movie => {
@@ -195,7 +195,7 @@ carouselMovies2.forEach(movie => {
   `
 })
 
-  const Carousel3 = document.getElementById('carousel1'); 
+  const Carousel3 = document.getElementById('carousel3'); 
   if (!Carousel3) return;
 
 carouselMovies3.forEach(movie => {
@@ -343,6 +343,16 @@ console.log(Watchlist);
 }();
 
 //Start of Sign Up and Sign in page script.js
+
+let username;
+
+document.getElementById('sign-in-form').addEventListener('submit', async function(event) {
+  event.preventDefault();
+  const username = document.getElementById('signInUserName').value;
+
+    localStorage.setItem('userName', username);
+    window.location.href = "/pages/Home.html";
+});
 
   // Toggle between Sign In and Sign Up forms using jQuery black magic (also changes the page title)
 
