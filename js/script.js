@@ -154,7 +154,7 @@ movieList.forEach(movie => {
                 <p class="card-text scrollable">${movie.description}</p>
                 <div class="d-flex gap-2">
                   <button class="btn btn-danger btn-sm"><a class="redButtonText" href="individual Movie.html">Watch</a></button>
-                  <button class="btn btn-dark btn-sm" onclick="PassID(${movie.id})">Add to list</button>
+                  <button class="btn btn-dark btn-sm watchlist2Btn" data-id="${movie.id}">+ Add to list</button>
                 </div>
               </div>
             </div>
@@ -163,17 +163,41 @@ movieList.forEach(movie => {
   `
 })
 
+//===================================================================================
+
+// //Js for Movie Watchlist page
+
+const Watchlist = [];
+
+function PassID(id) {
+  localStorage.setItem('selectedMovieID', id);
+}
+
+let watchlistButtons = document.querySelectorAll('.watchlistBtn');
+
+watchlistButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const movieID = button.getAttribute('data-id');
+    PassID(movieID);
+    Watchlist.push(movieID);
+    localStorage.setItem("watchlist",JSON.stringify(Watchlist));
+    console.log(`Movie ID ${movieID} added to Watchlist `,Watchlist);
+  });
+});
+
+//run find functrion (for each use movie Id to find movie from Id)
+
+//find inside a for each
+
+//define onl;oad funtion ouside of async
+
+//===================================================================================
+
+//===================================================================
+
 //Js for Homepage carousel
 
 //create cards for each movie object and display on homepage
-
-function homeLoad(){
-    function PassID(ID){
-
-  Watchlist.push(ID);
-
-}
-}
 
   const Carousel1 = document.getElementById('carousel1'); 
   if (!Carousel1) return;
@@ -191,8 +215,6 @@ carouselMovies1.forEach(movie => {
         <p>${movie.description}</p>
         <p>Rating: ${movie.rating}</p>
           <div class="d-flex gap-2">
-            <button class="btn btn-danger"><a class="redButtonText" href="individual Movie.html">Watch</a></button>
-            <button class="btn btn-dark" onclick="PassID(${movie.id})">+ Add list</button>
           </div>
       </div>
   `
@@ -214,8 +236,6 @@ carouselMovies2.forEach(movie => {
         <p>${movie.description}</p>
         <p>Rating: ${movie.rating}</p>
           <div class="d-flex gap-2">
-            <button class="btn btn-danger"><a class="redButtonText" href="individual Movie.html">Watch</a></button>
-            <button class="btn btn-dark" onclick="PassID(${movie.id})">+ Add list</button>
           </div>
       </div>
   `
@@ -237,8 +257,6 @@ carouselMovies3.forEach(movie => {
         <p>${movie.description}</p>
         <p>Rating: ${movie.rating}</p>
           <div class="d-flex gap-2">
-            <button class="btn btn-danger"><a class="redButtonText" href="individual Movie.html">Watch</a></button>
-            <button class="btn btn-dark" onclick="PassID(${movie.id})">+ Add list</button>
           </div>
       </div>
   `
@@ -259,8 +277,6 @@ popularMovies.forEach(movie => {
                 <h5 class="card-title">${movie.title}</h5>
                 <p class="card-text scrollable">${movie.description}</p>
                 <div class="d-flex gap-2">
-                  <button class="btn btn-danger btn-sm"><a class="redButtonText" href="individual Movie.html">Watch</a></button>
-                  <button class="btn btn-dark btn-sm" onclick="PassID(${movie.id})">Add to list</button>
                 </div>
               </div>
             </div>
@@ -284,8 +300,6 @@ recommendedMovies.forEach(movie => {
                 <h5 class="card-title">${movie.title}</h5>
                 <p class="card-text scrollable">${movie.description}</p>
                 <div class="d-flex gap-2">
-                  <button class="btn btn-danger btn-sm"><a class="redButtonText" href="individual Movie.html">Watch</a></button>
-                  <button class="btn btn-dark btn-sm" onclick="PassID(${movie.id})">Add to list</button>
                 </div>
               </div>
             </div>
@@ -321,19 +335,7 @@ badges.forEach((badge, i) => badge.style.display = i === 0 ? 'block' : 'none');
 
 //===================================================================================
 
-// //Js for Movie Watchlist page
-
-const Watchlist = [];    
-
-
-
-console.log(PassID);
-console.log(Watchlist);
-
-//===================================================================================
-
 //code for the individual movie page
-
 
 //===================================================================================
 
