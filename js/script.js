@@ -136,20 +136,46 @@ console.log(recommendedMovies);
 
 //Js for Movie Library page
 
+//Generate 40 cards for each movie object and display it on the Movie Library page
+console.log(movieList);
+
+movieList.forEach(movie => {
+
+  //check if CardBox exists if not then skip over this part of the code (to avoid errors on homepage)
+  const isCardBox = document.getElementById('CardBox'); 
+  if (!isCardBox) return;
+
+  document.getElementById('CardBox').innerHTML += ` <div class="col-md-4">
+
+            <div class="card">
+              <img src="${movie.image}" class="card-img-top" alt="Image failed to load displaying Movie ID:${movie.id}" style="height: 600px; object-fit: cover;">
+              <div class="card-body">
+                <h5 class="card-title">${movie.title}</h5>
+                <p class="card-text scrollable">${movie.description}</p>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-danger btn-sm"><a class="redButtonText" href="individual Movie.html">Watch</a></button>
+                  <button class="btn btn-dark btn-sm" onclick="PassID(${movie.id})">Add to list</button>
+                </div>
+              </div>
+            </div>
+
+  </div>
+  `
+})
+
 //Js for Homepage carousel
 
 //create cards for each movie object and display on homepage
 
-// function homeLoad(){
-//     function PassID(ID){
+function homeLoad(){
+    function PassID(ID){
 
-//   Watchlist.push(ID);
+  Watchlist.push(ID);
 
-// }
-// }
+}
+}
 
   const Carousel1 = document.getElementById('carousel1'); 
-
   if (!Carousel1) return;
   
 carouselMovies1.forEach(movie => {
@@ -218,34 +244,7 @@ carouselMovies3.forEach(movie => {
   `
 })
 
-//Generate 40 cards for each movie object and display it on the Movie Library page
-console.log(movieList);
-
-movieList.forEach(movie => {
-
-  //check if CardBox exists if not then skip over this part of the code (to avoid errors on homepage)
-  const isCardBox = document.getElementById('CardBox'); 
-  if (!isCardBox) return;
-
-  document.getElementById('CardBox').innerHTML += ` <div class="col-md-4">
-
-            <div class="card">
-              <img src="${movie.image}" class="card-img-top" alt="..." style="height: 600px; object-fit: cover;">
-              <div class="card-body">
-                <h5 class="card-title">${movie.title}</h5>
-                <p class="card-text scrollable">${movie.description}</p>
-                <div class="d-flex gap-2">
-                  <button class="btn btn-danger btn-sm"><a class="redButtonText" href="individual Movie.html">Watch</a></button>
-                  <button class="btn btn-dark btn-sm" onclick="PassID(${movie.id})">Add to list</button>
-                </div>
-              </div>
-            </div>
-
-  </div>
-  `
-})
-
-// //===================================================================================
+//===================================================================================
 
 popularMovies.forEach(movie => {
 
@@ -270,7 +269,7 @@ popularMovies.forEach(movie => {
   `
 })
 
-// //===================================================================================
+//===================================================================================
 
 recommendedMovies.forEach(movie => {
 
