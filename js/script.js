@@ -19,14 +19,6 @@ class Movie{
   }
 }
 
-//Function to filter movies with rating 7.4 and above
-
-function isHighRated(movie){
-  return movie.rating >= 7.4;
-}
-
-
-
 //Fetch data from API twice to get 40 movies total
 
 !async function() {
@@ -133,6 +125,47 @@ console.log(popularMovies);
 console.log(recommendedMovies);
 
 //===================================================================================
+//Make the numbers from the watchlist the same data type as the id from the API so you can actually filter them
+const raw = localStorage.getItem('watchlist');
+const savedIds = raw ? JSON.parse(raw) : [];
+const idSet = new Set(savedIds.map(String));
+
+//filter the movies based off of the movie ID from the watchlist
+const watchlistMovies = movieList.filter(m => idSet.has(String(m.id)));
+
+//same code as the other cards
+watchlistMovies.forEach(movie => {
+
+  const iswatchlist = document.getElementById('Watchlist');
+  if (!iswatchlist) return;
+
+    document.getElementById('Watchlist').innerHTML +=
+    ` 
+<div class="col-12 col-md-6 py-3">
+  <div class="card h-100">
+    <div class="row g-0 align-items-stretch">
+        <div class="col-5">
+          <img src="${movie.image}"alt="Image failed to load. Movie ID: ${movie.id}"class="img-fluid h-100 w-100" style="object-fit: cover;">
+        </div>
+
+        <div class="col-7">
+          <div class="card-body h-100 d-flex flex-column">
+            <h5 class="watchcard-title">${movie.title}</h5>
+            <p class="watchcard-text scrollable flex-grow-1">${movie.description}</p>
+            <div class="d-flex gap-2 mt-auto align-items-center">
+              <a class="btn btn-danger btn-sm" href="individual Movie.html">Watch</a>
+              <button class="btn btn-dark btn-sm removeBtn" data-id="${movie.id}">Remove Movie</button>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+  `
+})
+
+//===================================================================================
 
 //Js for Movie Library page
 
@@ -154,7 +187,7 @@ movieList.forEach(movie => {
                 <p class="card-text scrollable">${movie.description}</p>
                 <div class="d-flex gap-2">
                   <button class="btn btn-danger btn-sm"><a class="redButtonText" href="individual Movie.html">Watch</a></button>
-                  <button class="btn btn-dark btn-sm watchlist2Btn" data-id="${movie.id}">+ Add to list</button>
+                  <button class="btn btn-dark btn-sm watchlistBtn" data-id="${movie.id}">+ Add to list</button>
                 </div>
               </div>
             </div>
@@ -167,7 +200,7 @@ movieList.forEach(movie => {
 
 // //Js for Movie Watchlist page
 
-const Watchlist = [];
+const Watchlist = JSON.parse(localStorage.getItem('watchlist') || '[]');
 
 function PassID(id) {
   localStorage.setItem('selectedMovieID', id);
@@ -179,17 +212,15 @@ watchlistButtons.forEach(button => {
   button.addEventListener('click', () => {
     const movieID = button.getAttribute('data-id');
     PassID(movieID);
-    Watchlist.push(movieID);
+    if (!Watchlist.includes(movieID)) Watchlist.push(movieID);
     localStorage.setItem("watchlist",JSON.stringify(Watchlist));
     console.log(`Movie ID ${movieID} added to Watchlist `,Watchlist);
   });
 });
 
-//run find functrion (for each use movie Id to find movie from Id)
+//run find function (for each use movie Id to find movie from Id)
 
 //find inside a for each
-
-//define onl;oad funtion ouside of async
 
 //===================================================================================
 
@@ -343,7 +374,16 @@ badges.forEach((badge, i) => badge.style.display = i === 0 ? 'block' : 'none');
 
 }();
 
-//Start of Sign Up and Sign in page script.js
+//Watchlist Js
+
+function loadList() {
+
+  const list = localStorage.getItem('watchlist');
+  console.log("Loaded Watchlist", list);
+  return list;
+};
+
+//===================================================================================
 
 let username;
 

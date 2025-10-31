@@ -96,7 +96,22 @@
     padding: 1%;
     margin: 2%;
     color: #d3d3d3;
-    max-height: 5em;
+    max-height: 6em;
+    overflow: auto; 
+  }
+
+  /*Watchlist cards*/
+
+  .watchcard-title {
+    color: white;
+    font-weight: bold;
+  }
+
+  .watchcard-text {
+    padding: 1%;
+    margin: 2%;
+    color: #d3d3d3;
+    max-height: 15em;
     overflow: auto; 
   }
 
@@ -109,6 +124,9 @@
   .btn {
     width: 50%;
     height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .redButtonText {
@@ -186,10 +204,8 @@
 /*Movie Watchlist Styling */
   
   .Moviewatchlist {
-    background-color: #363636;
+    background-color: #000000;
     color: white;
-    height: 700px;
-    width: 100%;
   }
 
 /* Individual Movie Page Styling */
