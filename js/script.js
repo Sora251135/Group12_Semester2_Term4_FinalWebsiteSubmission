@@ -6,8 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+
+
 class Movie{
-  constructor(image, year, title, description, rating, link, backdrop,id){
+  constructor(image, year, title, description, rating, link, backdrop, id, language){
     this.image = image;
     this.year = year;
     this.title = title;
@@ -16,8 +18,32 @@ class Movie{
     this.link = link;
     this.backdrop = backdrop;
     this.id = id;
+    this,language = language;
   }
 }
+
+// === Watchlist Items to load before the async ===
+const WATCHLIST_KEY = 'watchlist';
+
+function getWatchlist() {
+  try {
+    return JSON.parse(localStorage.getItem(WATCHLIST_KEY)) || [];
+  } catch {
+    return [];
+  }
+}
+
+function saveWatchlist(list) {
+  localStorage.setItem(WATCHLIST_KEY, JSON.stringify(list));
+}
+
+function removeFromWatchlist(id) {
+  const target = String(id);
+  const next = getWatchlist().map(String).filter(x => x !== target);
+  saveWatchlist(next);
+  return next;
+}
+
 
 //Fetch data from API twice to get 40 movies total
 
@@ -68,10 +94,11 @@ console.log(data);
     let description = data2.results[i].overview;
     let rating = data2.results[i].vote_average;
     let link = `https://www.themoviedb.org/movie/${data2.results[i].id}`;
-    let backdrop = `https://image.tmdb.org/t/p/w500${data2.results[i].backdrop_path}`;
+    let backdrop = `https://image.tmdb.org/t/p/w1280${data2.results[i].backdrop_path}`;
     let id = data2.results[i].id;
+    let language = data2.results[i].original_language;
 
-    movieList.push(window["movie_" + i] = new Movie(image, year, title, description, rating, link, backdrop,id));
+    movieList.push(window["movie_" + i] = new Movie(image, year, title, description, rating, link, backdrop, id, language));
 
   }  
 
@@ -83,10 +110,11 @@ console.log(data);
     let description = data.results[i].overview;
     let rating = data.results[i].vote_average;
     let link = `https://www.themoviedb.org/movie/${data.results[i].id}`;
-    let backdrop = `https://image.tmdb.org/t/p/w500${data.results[i].backdrop_path}`;
+    let backdrop = `https://image.tmdb.org/t/p/w1280${data.results[i].backdrop_path}`;
     let id = data.results[i].id;
+    let language = data.results[i].original_language;
 
-    movieList.push(window["movie_" + i] = new Movie(image, year, title, description, rating, link,backdrop,id));
+    movieList.push(window["movie_" + i] = new Movie(image, year, title, description, rating, link, backdrop, id, language));
 
   }
 
@@ -125,7 +153,8 @@ console.log(popularMovies);
 console.log(recommendedMovies);
 
 //===================================================================================
-//Make the numbers from the watchlist the same data type as the id from the API so you can actually filter them
+
+//Make the numbers from the watchlist the same data type as the id from the API so you can actually filter them 
 const raw = localStorage.getItem('watchlist');
 const savedIds = raw ? JSON.parse(raw) : [];
 const idSet = new Set(savedIds.map(String));
@@ -133,7 +162,6 @@ const idSet = new Set(savedIds.map(String));
 //filter the movies based off of the movie ID from the watchlist
 const watchlistMovies = movieList.filter(m => idSet.has(String(m.id)));
 
-//same code as the other cards
 watchlistMovies.forEach(movie => {
 
   const iswatchlist = document.getElementById('Watchlist');
@@ -141,29 +169,77 @@ watchlistMovies.forEach(movie => {
 
     document.getElementById('Watchlist').innerHTML +=
     ` 
-<div class="col-12 col-md-6 py-3">
-  <div class="card h-100">
-    <div class="row g-0 align-items-stretch">
-        <div class="col-5">
-          <img src="${movie.image}"alt="Image failed to load. Movie ID: ${movie.id}"class="img-fluid h-100 w-100" style="object-fit: cover;">
-        </div>
+      <div data-card class="col-12 col-md-6 py-3">
+        <div class="card h-100">
+          <div class="row g-0 align-items-stretch">
+              <div class="col-5">
+              <img src="${movie.image}" srcset="${movie.image} 342w, ${movie.image} 500w" class="card-img-top" sizes="(max-width: 576px) 100vw, 342px">
+              </div>
 
-        <div class="col-7">
-          <div class="card-body h-100 d-flex flex-column">
-            <h5 class="watchcard-title">${movie.title}</h5>
-            <p class="watchcard-text scrollable flex-grow-1">${movie.description}</p>
-            <div class="d-flex gap-2 mt-auto align-items-center">
-              <a class="btn btn-danger btn-sm" href="individual Movie.html">Watch</a>
-              <button class="btn btn-dark btn-sm removeBtn" data-id="${movie.id}">Remove Movie</button>
-            </div>
+              <div class="col-7">
+                <div class="card-body h-100 d-flex flex-column">
+                  <h5 class="watchcard-title">${movie.title}</h5>
+                  <p class="watchcard-text scrollable flex-grow-1">${movie.description}</p>
+                  <div class="d-flex gap-2 mt-auto align-items-center">
+                    <button class="btn btn-danger btn-sm" data-id="${movie.id}"><a class="btn btn-danger btn-sm watchlink"data-id="${movie.id}"href="individual%20Movie.html">Watch</a></button>
+                    <button class="btn btn-dark btn-sm removeBtn" data-id="${movie.id}">Remove Movie</button>
+                  </div>
+                </div>
+              </div>
           </div>
         </div>
+      </div>
+  `
+})
+
+//===================================================================================
+
+//Get the Id from the selected Movie
+const chosenId = localStorage.getItem('chosenMovieID');
+if (chosenId) {
+
+  //make the movie the selected movie from the movie list using the ID to find the correct one
+  const movie = movieList.find(m => String(m.id) === String(chosenId));
+
+  //check if individual movie page has the individual movie id for the DOM manipulation
+  const isIndividual = document.getElementById('IndividualMovie');
+  if (movie && isIndividual) {
+
+    isIndividual.innerHTML = 
+`
+
+<div>
+  <div class="indivBox">
+    <div class="row">
+
+      <div class="col ">
+        <img src="${movie.image}" srcset="${movie.image} 342w, ${movie.image} 500w" class="indivImage card-img-top" sizes="(max-width: 576px) 100vw, 342px">
+      </div>
+      
+      <div class="col indivDeets">
+        <h1 class="indivTitle mt-3">${movie.title}</h1>
+        <p class="indivDesc">${movie.description}</p>
+        <h5 class="indivRating">Movie Rating: ${movie.rating}</h5>
+        <h5 class="indivYear">Release Date: ${movie.year}</h5>
+        <h5 class="Indiv">TMDB Code: <a href="${movie.link}">${movie.id}</a></h5>
+      </div>
+
     </div>
   </div>
 </div>
 
-  `
-})
+`
+
+  document.getElementById('NavTitle').innerHTML += 
+`
+
+${movie.title}
+
+`
+    ;
+  }
+}
+
 
 //===================================================================================
 
@@ -178,20 +254,20 @@ movieList.forEach(movie => {
   const isCardBox = document.getElementById('CardBox'); 
   if (!isCardBox) return;
 
-  document.getElementById('CardBox').innerHTML += ` <div class="col-md-4">
-
+  document.getElementById('CardBox').innerHTML += 
+  `
+  <div class="col-md-4">
             <div class="card">
-              <img src="${movie.image}" class="card-img-top" alt="Image failed to load displaying Movie ID:${movie.id}" style="height: 600px; object-fit: cover;">
+              <img src="${movie.image}" srcset="${movie.image} 342w, ${movie.image} 500w" class="card-img-top" sizes="(max-width: 576px) 100vw, 342px">
               <div class="card-body">
                 <h5 class="card-title">${movie.title}</h5>
                 <p class="card-text scrollable">${movie.description}</p>
                 <div class="d-flex gap-2">
-                  <button class="btn btn-danger btn-sm"><a class="redButtonText" href="individual Movie.html">Watch</a></button>
+                  <button class="btn btn-danger btn-sm" data-id="${movie.id}"><a class="btn btn-danger btn-sm watchlink"data-id="${movie.id}"href="individual%20Movie.html">Watch</a></button>
                   <button class="btn btn-dark btn-sm watchlistBtn" data-id="${movie.id}">+ Add to list</button>
                 </div>
               </div>
             </div>
-
   </div>
   `
 })
@@ -218,11 +294,29 @@ watchlistButtons.forEach(button => {
   });
 });
 
-//run find function (for each use movie Id to find movie from Id)
+//Remove Button
+document.addEventListener('click', (Remove) => {
+  const btn = Remove.target.closest('.removeBtn');
+  if (!btn) return;
 
-//find inside a for each
+  const id = btn.dataset.id;
+  removeFromWatchlist(id);
+
+  const card = btn.closest('[data-card]');
+  if (card) card.remove();
+});
 
 //===================================================================================
+
+//js for individual page
+
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('.watchlink');
+  if (!a) return;
+  e.preventDefault(); // ensure we store before navigating
+  localStorage.setItem('chosenMovieID', a.dataset.id);
+  window.location.href = a.href;
+});
 
 //===================================================================
 
@@ -366,13 +460,11 @@ badges.forEach((badge, i) => badge.style.display = i === 0 ? 'block' : 'none');
 
 //===================================================================================
 
-//code for the individual movie page
-
-//===================================================================================
-
 //For API JS keep code within this function scope
 
 }();
+
+//===================================================================================
 
 //Watchlist Js
 
@@ -384,6 +476,21 @@ function loadList() {
 };
 
 //===================================================================================
+
+//Individual Js
+
+function loadMovie() {
+
+  const individualMovie = localStorage.getItem('chosenMovieID');
+  console.log("Loaded Movie", individualMovie);
+  return individualMovie;
+};
+
+//===================================================================================
+
+
+
+//signin/signup JS
 
 let username;
 

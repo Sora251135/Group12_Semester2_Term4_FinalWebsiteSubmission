@@ -2,12 +2,13 @@
  
  .BackgroundAndText {
 
-  background-color: #212121;
+  background-color: #818181;
   background-image: linear-gradient(
-    to bottom right,
-    #212121,
-    #340b0b,
-    #424242
+    to left,
+    #6d1010,
+    #6d1010,
+    #000000,
+    #000000
   );
     
     min-height: 100vh;
@@ -100,6 +101,10 @@
     overflow: auto; 
   }
 
+    .card-body {
+    overflow-y: auto;
+  }
+
   /*Watchlist cards*/
 
   .watchcard-title {
@@ -114,11 +119,6 @@
     max-height: 15em;
     overflow: auto; 
   }
-
-  .card-body {
-    overflow-y: auto;
-  }
-
   /*Card buttons*/
 
   .btn {
@@ -204,12 +204,26 @@
 /*Movie Watchlist Styling */
   
   .Moviewatchlist {
-    background-color: #000000;
+    background-color: #00000000;
     color: white;
   }
 
 /* Individual Movie Page Styling */
 
-  .IndividualMovie {
+.indivBox > * {
+  padding: 3%;
+}
 
-  }
+.indivImage {
+  border-radius: 3%;
+}
+
+.indivDeets {
+  margin: auto;
+  padding-left: 5%;
+}
+
+.indivDesc {
+  max-height: 40vh;
+  overflow: auto;
+}
