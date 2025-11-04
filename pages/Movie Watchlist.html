@@ -15,7 +15,7 @@
     
 </head>
 
-<body class="BackgroundAndText">
+<body class="BackgroundAndText d-flex flex-column min-vh-100" onload="loadList()">
     
 <!-- Navbar -->
 
@@ -32,7 +32,7 @@
         <ul class="navbar-nav">
           <li class="nav-item"><a class="nav-link navText" href="Home.html">HOME</a></li>
           <li class="nav-item"><a class="nav-link navText" href="Movie Library.html">MOVIES</a></li>
-          <li class="nav-item"><a class="nav-link navText" href="/Sign in and Sign up.html">SIGN IN</a></li> 
+          <li class="nav-item"><a class="nav-link navText" href="/index.html">SIGN IN</a></li> 
           <li class="nav-item"><a class="nav-link currentPage" href="Movie Watchlist.html">MY LIST</a></li>
           <li class="nav-item"><div><a class="nav-link" href="#"><i class="bi bi-search"></i></a></div></li>
         </ul>
@@ -42,15 +42,11 @@
 
   <!-- End of Navbar -->
 
-<section class="HomePageStyle mt-4 mb-0">
-  <Div class="Moviewatchlist container">
-    <div id="Watchlist">
+  <Div class="Moviewatchlist container flex-grow-1">
+    <div class="row"  id="Watchlist">
 
-      <!-- Movie cards will be injected here by script.js -->
-       
     </div>
   </Div>
-</section>
 
     <!-- Footer -->
 
