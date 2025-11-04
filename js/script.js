@@ -256,7 +256,7 @@ movieList.forEach(movie => {
 
   document.getElementById('CardBox').innerHTML += 
   `
-  <div class="col-md-4">
+  <div class="col-md-4" data-year="${movie.year.split('-')[0]}" data-rating="${movie.rating}">
             <div class="card">
               <img src="${movie.image}" srcset="${movie.image} 342w, ${movie.image} 500w" class="card-img-top" sizes="(max-width: 576px) 100vw, 342px">
               <div class="card-body">
@@ -275,6 +275,60 @@ movieList.forEach(movie => {
 //===================================================================================
 
 // //Js for Movie Watchlist page
+
+// Filter bar
+
+movieList.forEach(movie => {
+  const isCardBox = document.getElementById('CardBox'); 
+  if (!isCardBox) return;
+
+  document.getElementById('CardBox').innerHTML += 
+  `
+  <div class="col-md-4" data-year="${movie.year.split('-')[0]}" data-rating="${movie.rating}">
+    <div class="card">
+      <img src="${movie.image}" srcset="${movie.image} 342w, ${movie.image} 500w" class="card-img-top" sizes="(max-width: 576px) 100vw, 342px">
+      <div class="card-body">
+        <h5 class="card-title">${movie.title}</h5>
+        <p class="card-text scrollable">${movie.description}</p>
+        <div class="d-flex gap-2">
+          <button class="btn btn-danger btn-sm" data-id="${movie.id}"><a class="btn btn-danger btn-sm watchlink"data-id="${movie.id}"href="individual%20Movie.html">Watch</a></button>
+          <button class="btn btn-dark btn-sm watchlistBtn" data-id="${movie.id}">+ Add to list</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  `
+})
+
+
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.filter-btn');
+  if (!btn) return;
+
+  const filter = btn.dataset.filter;
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('#CardBox .col-md-4');
+
+  // Button active styling (makes sure it changes)
+  buttons.forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  cards.forEach(card => {
+    const year = parseInt(card.dataset.year);
+    const rating = parseFloat(card.dataset.rating);
+
+    let display = true;
+
+    // This is how it will filter - change if you feel the need to change it
+    if (filter === 'year') {
+      display = year >= 2025; // 
+    } else if (filter === 'rating') {
+      display = rating >= 7.6; 
+    }
+
+    card.style.display = display ? 'block' : 'none';
+  });
+});
 
 const Watchlist = JSON.parse(localStorage.getItem('watchlist') || '[]');
 
@@ -537,3 +591,5 @@ $(function(){
 //End of Sign in and Sign up page script.js
 
 //===================================================================================//
+
+
