@@ -181,7 +181,9 @@ watchlistMovies.forEach(movie => {
                   <h5 class="watchcard-title">${movie.title}</h5>
                   <p class="watchcard-text scrollable flex-grow-1">${movie.description}</p>
                   <div class="d-flex gap-2 mt-auto align-items-center">
-                    <button class="btn btn-danger btn-sm" data-id="${movie.id}"><a class="btn btn-danger btn-sm watchlink"data-id="${movie.id}"href="individual%20Movie.html">Watch</a></button>
+                    <button class="btn btn-danger btn-sm" data-id="${movie.id}">
+                      <a class="btn btn-danger btn-sm watchlink"data-id="${movie.id}"href="individual-movie.html">Watch</a>
+                    </button>
                     <button class="btn btn-dark btn-sm removeBtn" data-id="${movie.id}">Remove Movie</button>
                   </div>
                 </div>
@@ -263,7 +265,9 @@ movieList.forEach(movie => {
                 <h5 class="card-title">${movie.title}</h5>
                 <p class="card-text scrollable">${movie.description}</p>
                 <div class="d-flex gap-2">
-                  <button class="btn btn-danger btn-sm" data-id="${movie.id}"><a class="btn btn-danger btn-sm watchlink"data-id="${movie.id}"href="individual%20Movie.html">Watch</a></button>
+                  <button class="btn btn-danger btn-sm" data-id="${movie.id}">
+                    <a class="btn btn-danger btn-sm watchlink"data-id="${movie.id}"href="individual-movie.html">Watch</a>
+                  </button>
                   <button class="btn btn-dark btn-sm watchlistBtn" data-id="${movie.id}">+ Add to list</button>
                 </div>
               </div>
