@@ -592,4 +592,92 @@ $(function(){
 
 //===================================================================================//
 
+// // === LOGIN SUCCESS POPUP ===
+// document.addEventListener("DOMContentLoaded", () => {
+//   const signInForm = document.getElementById("sign-in-form");
+
+//   if (signInForm) {
+//     signInForm.addEventListener("submit", (event) => {
+//       event.preventDefault();
+
+//       const name = document.getElementById("signInUserName").value.trim();
+//       const email = document.getElementById("signInEmail").value.trim();
+//       const password = document.getElementById("singInPassword").value.trim();
+
+//       // Simple validation (you can customize this)
+//       if (name && email && password) {
+//         // Store the name for display on the homepage
+//         localStorage.setItem("userName", name);
+
+//         // Show popup message
+//         showLoginPopup();
+//       } else {
+//         alert("Please fill in all fields before signing in.");
+//       }
+//     });
+//   }
+// });
+
+// // Function to show the success popup
+// function showLoginPopup() {
+//   // Create the popup overlay
+//   const popup = document.createElement("div");
+//   popup.innerHTML = `
+//     <div class="login-popup-overlay">
+//       <div class="login-popup-box">
+//         <h2>✅ You have successfully logged in!</h2>
+//         <p>Welcome back to <strong>Red Curtain</strong>.</p>
+//         <button id="continueBtn">Continue</button>
+//       </div>
+//     </div>
+//   `;
+//   document.body.appendChild(popup);
+
+//   // Style it
+//   const style = document.createElement("style");
+//   style.textContent = `
+//     .login-popup-overlay {
+//       position: fixed;
+//       top: 0; left: 0;
+//       width: 100%; height: 100%;
+//       background-color: rgba(0,0,0,0.8);
+//       display: flex; justify-content: center; align-items: center;
+//       z-index: 9999;
+//     }
+//     .login-popup-box {
+//       background-color: #fff;
+//       color: #000;
+//       text-align: center;
+//       padding: 40px;
+//       border-radius: 10px;
+//       box-shadow: 0 0 15px rgba(0,0,0,0.4);
+//       width: 90%;
+//       max-width: 400px;
+//     }
+//     .login-popup-box h2 {
+//       color: #6d1010;
+//       margin-bottom: 10px;
+//     }
+//     #continueBtn {
+//       background-color: #6d1010;
+//       color: white;
+//       border: none;
+//       padding: 10px 20px;
+//       margin-top: 20px;
+//       border-radius: 5px;
+//       cursor: pointer;
+//       font-weight: bold;
+//     }
+//     #continueBtn:hover {
+//       background-color: #9e0e0e;
+//     }
+//   `;
+//   document.head.appendChild(style);
+
+//   // Add button event
+//   document.getElementById("continueBtn").addEventListener("click", () => {
+//     // Redirect to home page
+//     window.location.href = "pages/Home.html";
+//   });
+// }
 
