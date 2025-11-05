@@ -1,0 +1,64 @@
+[debug] [2025-11-05T09:08:13.625Z] ----------------------------------------------------------------------
+[debug] [2025-11-05T09:08:13.626Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2025-11-05T09:08:13.626Z] CLI Version:   14.23.0
+[debug] [2025-11-05T09:08:13.626Z] Platform:      darwin
+[debug] [2025-11-05T09:08:13.626Z] Node Version:  v22.20.0
+[debug] [2025-11-05T09:08:13.626Z] Time:          Wed Nov 05 2025 11:08:13 GMT+0200 (South Africa Standard Time)
+[debug] [2025-11-05T09:08:13.626Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-11-05T09:08:13.695Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-11-05T09:08:13.695Z] > authorizing via signed-in user (251196@virtualwindow.co.za)
+[debug] [2025-11-05T09:08:13.695Z] [iam] checking project dvfirebaseclass for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-11-05T09:08:13.695Z] Checked if tokens are valid: true, expires at: 1762337155179
+[debug] [2025-11-05T09:08:13.695Z] Checked if tokens are valid: true, expires at: 1762337155179
+[debug] [2025-11-05T09:08:13.696Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/dvfirebaseclass:testIamPermissions [none]
+[debug] [2025-11-05T09:08:13.696Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/dvfirebaseclass:testIamPermissions x-goog-quota-user=projects/dvfirebaseclass
+[debug] [2025-11-05T09:08:13.696Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/dvfirebaseclass:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-11-05T09:08:15.383Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/dvfirebaseclass:testIamPermissions 200
+[debug] [2025-11-05T09:08:15.383Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/dvfirebaseclass:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-11-05T09:08:15.384Z] Checked if tokens are valid: true, expires at: 1762337155179
+[debug] [2025-11-05T09:08:15.384Z] Checked if tokens are valid: true, expires at: 1762337155179
+[debug] [2025-11-05T09:08:15.384Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/dvfirebaseclass [none]
+[debug] [2025-11-05T09:08:15.962Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/dvfirebaseclass 200
+[debug] [2025-11-05T09:08:15.962Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/dvfirebaseclass {"projectId":"dvfirebaseclass","projectNumber":"287152681977","displayName":"DVfirebaseclass","name":"projects/dvfirebaseclass","resources":{"hostingSite":"dvfirebaseclass"},"state":"ACTIVE","etag":"1_580577ad-27c9-4abe-bb9e-c28260fe40e9"}
+[info] 
+[info] === Deploying to 'dvfirebaseclass'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2025-11-05T09:08:15.966Z] Checked if tokens are valid: true, expires at: 1762337155179
+[debug] [2025-11-05T09:08:15.966Z] Checked if tokens are valid: true, expires at: 1762337155179
+[debug] [2025-11-05T09:08:15.966Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/dvfirebaseclass/versions [none]
+[debug] [2025-11-05T09:08:15.966Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/dvfirebaseclass/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2025-11-05T09:08:18.317Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/dvfirebaseclass/versions 200
+[debug] [2025-11-05T09:18:23.656Z] ----------------------------------------------------------------------
+[debug] [2025-11-05T09:18:23.659Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2025-11-05T09:18:23.659Z] CLI Version:   14.23.0
+[debug] [2025-11-05T09:18:23.659Z] Platform:      darwin
+[debug] [2025-11-05T09:18:23.659Z] Node Version:  v22.20.0
+[debug] [2025-11-05T09:18:23.659Z] Time:          Wed Nov 05 2025 11:18:23 GMT+0200 (South Africa Standard Time)
+[debug] [2025-11-05T09:18:23.659Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-11-05T09:18:23.727Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-11-05T09:18:23.727Z] > authorizing via signed-in user (251196@virtualwindow.co.za)
+[debug] [2025-11-05T09:18:23.727Z] [iam] checking project dvfirebaseclass for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-11-05T09:18:23.727Z] Checked if tokens are valid: true, expires at: 1762337155179
+[debug] [2025-11-05T09:18:23.727Z] Checked if tokens are valid: true, expires at: 1762337155179
+[debug] [2025-11-05T09:18:23.727Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/dvfirebaseclass:testIamPermissions [none]
+[debug] [2025-11-05T09:18:23.727Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/dvfirebaseclass:testIamPermissions x-goog-quota-user=projects/dvfirebaseclass
+[debug] [2025-11-05T09:18:23.727Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/dvfirebaseclass:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-11-05T09:18:25.527Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/dvfirebaseclass:testIamPermissions 200
+[debug] [2025-11-05T09:18:25.527Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/dvfirebaseclass:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-11-05T09:18:25.528Z] Checked if tokens are valid: true, expires at: 1762337155179
+[debug] [2025-11-05T09:18:25.528Z] Checked if tokens are valid: true, expires at: 1762337155179
+[debug] [2025-11-05T09:18:25.528Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/dvfirebaseclass [none]
+[debug] [2025-11-05T09:18:26.342Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/dvfirebaseclass 200
+[debug] [2025-11-05T09:18:26.343Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/dvfirebaseclass {"projectId":"dvfirebaseclass","projectNumber":"287152681977","displayName":"DVfirebaseclass","name":"projects/dvfirebaseclass","resources":{"hostingSite":"dvfirebaseclass"},"state":"ACTIVE","etag":"1_580577ad-27c9-4abe-bb9e-c28260fe40e9"}
+[info] 
+[info] === Deploying to 'dvfirebaseclass'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2025-11-05T09:18:26.346Z] Checked if tokens are valid: true, expires at: 1762337155179
+[debug] [2025-11-05T09:18:26.346Z] Checked if tokens are valid: true, expires at: 1762337155179
+[debug] [2025-11-05T09:18:26.346Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/dvfirebaseclass/versions [none]
+[debug] [2025-11-05T09:18:26.346Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/dvfirebaseclass/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2025-11-05T09:18:28.796Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/dvfirebaseclass/versions 200
